@@ -1,0 +1,18 @@
+{
+  "name": "xantspace-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Modern portfolio website showcasing creative development work",
+  "author": "XantSpace",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "terser": "^5.46.0",
+    "vite": "^7.3.1"
+  }
+}
