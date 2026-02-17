@@ -171,6 +171,8 @@
          <div class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] gradient-orb-2 rounded-full mix-blend-screen opacity-50"></div>
          <div class="absolute -bottom-[20%] left-[20%] w-[900px] h-[900px] gradient-orb-1 rounded-full mix-blend-screen opacity-40"></div>
       </div>
+      <!-- Particle Canvas -->
+      <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[1]"></canvas>
       <!-- Navigation -->
       <nav class="fixed top-0 w-full z-50 nav-glass transition-all duration-300">
          <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -329,9 +331,17 @@
                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
                         </div>
                      </div>
-                     <div class="p-4 md:p-6 bg-[#131313]">
-                            <h3 class="text-base md:text-lg font-bold text-white">Hotel booking site</h3>
-                      </div>
+                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
+                        <div>
+                           <h3 class="text-sm md:text-base font-bold text-white mb-1">Hotel booking site</h3>
+                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">A real-time analytics platform for institutional crypto traders featuring live websocket data feeds.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">React</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">D3.js</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Node.js</span>
+                        </div>
+                     </div>
                   </div>
 
                   <!-- Project Card 2: Luxe E-Commerce -->
@@ -347,9 +357,17 @@
                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
                         </div>
                      </div>
-                     <div class="p-4 md:p-6 bg-[#131313]">
-                            <h3 class="text-base md:text-lg font-bold text-white">Wig E-commerce</h3>
-                      </div>
+                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
+                        <div>
+                           <h3 class="text-sm md:text-base font-bold text-white mb-1">Wig E-commerce</h3>
+                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">Modernizing the shopping experience for a high-end fashion brand with headless architecture.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Next.js</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Shopify</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Three.js</span>
+                        </div>
+                     </div>
                   </div>
 
                   <!-- Project Card 3: Vitality Health -->
@@ -366,9 +384,17 @@
                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
                         </div>
                      </div>
-                     <div class="p-4 md:p-6 bg-[#131313]">
-                            <h3 class="text-base md:text-lg font-bold text-white">1ST Geomatics site</h3>
-                      </div>
+                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
+                        <div>
+                           <h3 class="text-sm md:text-base font-bold text-white mb-1">1ST Geomatics site</h3>
+                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">iOS application for tracking daily fitness metrics and nutrition with HealthKit integration.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">SwiftUI</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">HealthKit</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Firebase</span>
+                        </div>
+                     </div>
                   </div>
 
                    <!-- Project Card 4: DeFi Wallet -->
@@ -381,9 +407,17 @@
                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
                         </div>
                      </div>
-                     <div class="p-4 md:p-6 bg-[#131313]">
-                            <h3 class="text-base md:text-lg font-bold text-white">Klina AI</h3>
-                      </div>
+                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
+                        <div>
+                           <h3 class="text-sm md:text-base font-bold text-white mb-1">Klina AI</h3>
+                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">A secure, non-custodial wallet for interacting with decentralized finance protocols across multiple chains.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Web3.js</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Solidity</span>
+                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">React Native</span>
+                        </div>
+                     </div>
                   </div>
                </div>
 
@@ -584,6 +618,86 @@
 
         observer.observe(skillBars);
       });
+    </script>
+    <script>
+      // Particle Background Animation
+      (function() {
+        const canvas = document.getElementById('particle-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h, particles;
+        const PARTICLE_COUNT = 60;
+        const CONNECTION_DIST = 120;
+        const SPEED = 0.3;
+
+        function resize() {
+          w = canvas.width = window.innerWidth;
+          h = canvas.height = window.innerHeight;
+        }
+
+        function createParticles() {
+          particles = [];
+          for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push({
+              x: Math.random() * w,
+              y: Math.random() * h,
+              vx: (Math.random() - 0.5) * SPEED,
+              vy: (Math.random() - 0.5) * SPEED,
+              r: Math.random() * 1.5 + 0.5,
+              alpha: Math.random() * 0.4 + 0.1
+            });
+          }
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, w, h);
+
+          // Draw connections
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < CONNECTION_DIST) {
+                const opacity = (1 - dist / CONNECTION_DIST) * 0.12;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = 'rgba(89, 37, 244, ' + opacity + ')';
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Draw & update particles
+          for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Wrap around edges
+            if (p.x < 0) p.x = w;
+            if (p.x > w) p.x = 0;
+            if (p.y < 0) p.y = h;
+            if (p.y > h) p.y = 0;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, ' + p.alpha + ')';
+            ctx.fill();
+          }
+
+          requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', () => {
+          resize();
+        });
+
+        resize();
+        createParticles();
+        draw();
+      })();
     </script>
    </body>
 </html>
