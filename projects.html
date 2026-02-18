@@ -134,6 +134,83 @@
             to { transform: rotateX(-60deg) rotateY(360deg) translateX(60px) rotateY(-360deg) rotateX(60deg); }
         }
 
+        /* Galaxy Explosion Effect */
+        .galaxy-beam {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scaleY(0);
+            width: 2px;
+            height: 100vh;
+            background: linear-gradient(to bottom, transparent, #fff, #5925f4, #fff, transparent);
+            filter: blur(8px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .galaxy-shockwave {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 50px;
+            height: 50px;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .rocket-container:hover .galaxy-beam {
+            opacity: 0.8;
+            transform: translate(-50%, -50%) scaleY(1.5);
+            width: 120px;
+            filter: blur(50px);
+            box-shadow: 0 0 150px #5925f4;
+        }
+
+        .rocket-container:hover .galaxy-shockwave {
+            animation: shockwave 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .rocket-container:hover .rocket-svg-wrapper {
+            filter: drop-shadow(0 0 50px #fff);
+            animation: high-speed 0.1s linear infinite;
+            transform: scale(1.1) translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        @keyframes high-speed {
+            0% { transform: scale(1.1) translate(0, -20px); }
+            25% { transform: scale(1.1) translate(2px, -22px); }
+            50% { transform: scale(1.1) translate(-2px, -18px); }
+            75% { transform: scale(1.1) translate(1px, -21px); }
+            100% { transform: scale(1.1) translate(0, -20px); }
+        }
+
+        .rocket-container:hover .flame-effect {
+            height: 60px;
+            width: 12px;
+            filter: blur(4px);
+            opacity: 1;
+            animation: flame-thrust 0.05s linear infinite;
+        }
+
+        @keyframes flame-thrust {
+            0% { transform: scaleY(1); opacity: 0.8; }
+            50% { transform: scaleY(1.5); opacity: 1; }
+            100% { transform: scaleY(1.2); opacity: 0.9; }
+        }
+
+        @keyframes shockwave {
+            0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; border-width: 20px; border-color: #fff; }
+            50% { border-color: #5925f4; }
+            100% { transform: translate(-50%, -50%) scale(10); opacity: 0; border-width: 1px; border-color: transparent; }
+        }
+
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 8px;
@@ -215,7 +292,11 @@
             <!-- Coming Soon Section (Django Style) -->
             <div class="flex-grow flex flex-col items-center justify-center text-center py-20 min-h-[60vh]">
                <!-- Rocket Container -->
-               <div class="relative mb-12 animate-float">
+               <div class="rocket-container relative mb-12 animate-float group">
+                  <!-- Galaxy Explosion Elements -->
+                  <div class="galaxy-beam"></div>
+                  <div class="galaxy-shockwave"></div>
+                  
                   <!-- Atom Balls -->
                   <div class="atom-container">
                      <div class="atom-ball ball-1"></div>
@@ -231,8 +312,8 @@
                   </div>
                   <!-- Rocket Flame/Trail -->
                   <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-                     <div class="w-2 h-8 bg-gradient-to-t from-transparent via-primary/50 to-primary rounded-full animate-pulse"></div>
-                     <div class="w-1.5 h-6 bg-gradient-to-t from-transparent via-primary-light/30 to-primary-light/80 rounded-full animate-pulse delay-75"></div>
+                     <div class="w-2 h-8 bg-gradient-to-t from-transparent via-primary/50 to-primary rounded-full animate-pulse flame-effect"></div>
+                     <div class="w-1.5 h-6 bg-gradient-to-t from-transparent via-primary-light/30 to-primary-light/80 rounded-full animate-pulse delay-75 flame-effect"></div>
                   </div>
                </div>
 
@@ -271,34 +352,90 @@
          </div>
       </footer>
    <script type="module" src="/src/main.js"></script>
-    <script>
+     <script>
       (function() {
         const canvas = document.getElementById('particle-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let w, h, particles;
-        const PARTICLE_COUNT = 60;
+        const PARTICLE_COUNT = 80;
         const CONNECTION_DIST = 120;
         const SPEED = 0.5;
+        let currentWarp = 0;
+        let isWarping = false;
+
+        // Listen for rocket hover
+        const rocket = document.querySelector('.rocket-container');
+        if (rocket) {
+          rocket.addEventListener('mouseenter', () => isWarping = true);
+          rocket.addEventListener('mouseleave', () => isWarping = false);
+        }
+
         function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
         function createParticles() {
           particles = [];
           for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-0.5)*SPEED, vy: (Math.random()-0.5)*SPEED, r: Math.random()*1.5+0.5, alpha: Math.random()*0.4+0.1 });
+            particles.push({ 
+              x: Math.random()*w, 
+              y: Math.random()*h, 
+              vx: (Math.random()-0.5)*SPEED, 
+              vy: (Math.random()-0.5)*SPEED, 
+              r: Math.random()*1.5+0.5, 
+              alpha: Math.random()*0.4+0.1 
+            });
           }
         }
         function draw() {
           ctx.clearRect(0,0,w,h);
-          for (let i=0;i<particles.length;i++) {
-            for (let j=i+1;j<particles.length;j++) {
-              const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
-              if (dist<CONNECTION_DIST) { ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle='rgba(89,37,244,'+(1-dist/CONNECTION_DIST)*0.12+')'; ctx.lineWidth=0.5; ctx.stroke(); }
+          
+          // Smoothed warp transition
+          if (isWarping) {
+            currentWarp += (20 - currentWarp) * 0.05;
+          } else {
+            currentWarp += (0 - currentWarp) * 0.1;
+          }
+
+          // Connection lines (fade out during warp for cleaner look)
+          if (currentWarp < 10) {
+            for (let i=0;i<particles.length;i++) {
+              for (let j=i+1;j<particles.length;j++) {
+                const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+                if (dist<CONNECTION_DIST) { 
+                  ctx.beginPath(); 
+                  ctx.moveTo(particles[i].x,particles[i].y); 
+                  ctx.lineTo(particles[j].x,particles[j].y); 
+                  const opacity = (1-dist/CONNECTION_DIST)*0.12 * (1 - currentWarp/10);
+                  ctx.strokeStyle='rgba(89,37,244,'+opacity+')'; 
+                  ctx.lineWidth=0.5; 
+                  ctx.stroke(); 
+                }
+              }
             }
           }
+
           for (const p of particles) {
-            p.x+=p.vx; p.y+=p.vy;
+            // Movement: Normal velocity + Warp downward bias
+            p.x += p.vx;
+            p.y += p.vy + currentWarp;
+            
+            // Boundary wrap
             if(p.x<0)p.x=w; if(p.x>w)p.x=0; if(p.y<0)p.y=h; if(p.y>h)p.y=0;
-            ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(255,255,255,'+p.alpha+')'; ctx.fill();
+            
+            if (currentWarp > 2) {
+              // Warp "Star-streak" effect
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p.x, p.y - (currentWarp * 2)); // Stretch upwards relative to movement
+              ctx.strokeStyle = `rgba(255, 255, 255, ${p.alpha * 2})`;
+              ctx.lineWidth = p.r;
+              ctx.stroke();
+            } else {
+              // Normal circle effect
+              ctx.beginPath(); 
+              ctx.arc(p.x,p.y,p.r,0,Math.PI*2); 
+              ctx.fillStyle='rgba(255,255,255,'+p.alpha+')'; 
+              ctx.fill();
+            }
           }
           requestAnimationFrame(draw);
         }
