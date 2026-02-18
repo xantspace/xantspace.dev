@@ -81,6 +81,59 @@
             text-shadow: 0 0 20px rgba(89, 37, 244, 0.5);
         }
         
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .rocket-svg-wrapper {
+            filter: drop-shadow(0 0 20px rgba(89, 37, 244, 0.5));
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Atom Orbiting Balls */
+        .atom-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .atom-ball {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .ball-1 {
+            background: #7c52f6;
+            box-shadow: 0 0 15px #7c52f6;
+            animation: orbit1 3s linear infinite;
+        }
+        .ball-2 {
+            background: #ffffff;
+            box-shadow: 0 0 15px #ffffff;
+            animation: orbit2 4s linear infinite;
+        }
+
+        @keyframes orbit1 {
+            from { transform: rotateX(60deg) rotateY(0deg) translateX(70px) rotateY(0deg) rotateX(-60deg); }
+            to { transform: rotateX(60deg) rotateY(360deg) translateX(70px) rotateY(-360deg) rotateX(-60deg); }
+        }
+        @keyframes orbit2 {
+            from { transform: rotateX(-60deg) rotateY(0deg) translateX(60px) rotateY(0deg) rotateX(60deg); }
+            to { transform: rotateX(-60deg) rotateY(360deg) translateX(60px) rotateY(-360deg) rotateX(60deg); }
+        }
+
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
             width: 8px;
@@ -157,157 +210,49 @@
       <!-- Main Content -->
       <main class="relative z-10 flex-grow flex flex-col pt-20">
          <div class="max-w-7xl mx-auto px-6 py-16">
-            <!-- Header Section -->
-            <div class="text-center mb-16 relative">
-            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6 neon-glow text-white">
-                            Projects
-                        </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                            Building the future of the web, one pixel at a time. A collection of digital experiences focusing on performance and aesthetics.
-                        </p>
-            </div>
-            <!-- Filter Bar -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button class="px-6 py-2.5 rounded-full bg-primary text-white text-sm font-bold transition-all shadow-lg shadow-primary/20">
-                            All Work
-                        </button>
-            <button class="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-sm font-medium transition-all backdrop-blur-md">
-                            Web Apps
-                        </button>
-            <button class="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-sm font-medium transition-all backdrop-blur-md">
-                            Mobile
-                        </button>
-            <button class="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-sm font-medium transition-all backdrop-blur-md">
-                            UI Design
-                        </button>
-            <button class="px-6 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-sm font-medium transition-all backdrop-blur-md">
-                            WebGL
-                        </button>
-            </div>
-            <!-- Projects Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Card 1 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-            <div class="aspect-video overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-            <button class="flex items-center gap-2 text-white font-bold">
-                                        View Project <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            </div>
-            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Futuristic glowing purple 3D interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAw6v6LK5BQFEJJPh1N4xgVJYHvhAq8QgAXH7kvdmjbUkD9qpCWbV1vpvnZCarkSLAdkhZ1FsyBeC1_xUeXNjMdbFWaMiJYuthe880pYcPzZIuBIo_8TmZnWDcpddIV4R6aOh7NOfl-LgGHwHrluBSQkSQ7wXhZ00v-Lh26yvQ68BeXhhC_4OSii_4_sMsEBr34sWV_QEaHKqAWB3x7szmcGp3AFr-B-t4X7V-86QnUjdakPzbmgoQ4LV5OdEY-tBT-jldbZqhT5A"/>
-            </div>
-            <div class="p-6">
-            <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">React</span>
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">WebGL</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Quantum Dashboard</h3>
-            <p class="text-sm text-gray-400 opacity-60 line-clamp-2">Real-time data visualization with glassmorphism effects and neural network integration.</p>
-            </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-            <div class="aspect-video overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-            <button class="flex items-center gap-2 text-white font-bold">
-                                        View Project <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            </div>
-            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Abstract fluid blue and violet waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWKFtS8aM-86XxGo9L4oFnlrNv3z1GJxrKRfFNt1LGvOKjrcolym4_cMh3nuTv5yTn0JXN-wYOhMF8QI4Gr8g3xdeiYsOIZYvdq8zENvnvjcurcgjjMh33zcmVbZvGmpOqudi7B2MUc8wsEJLwCR5rWM5PqsCzebWQ6jxv4mQlzHgjQZZmnM9Sag7Wt4rknPhYWHnwaoVLeD36hWNT4Alcf73jGEy6RYX44EwInsATHtmLMl9mGFH7HenGK1mJrKoyfEW-5pRxY5g"/>
-            </div>
-            <div class="p-6">
-            <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">SwiftUI</span>
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">iOS</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Nebula Weather</h3>
-            <p class="text-sm text-gray-400 opacity-60 line-clamp-2">A futuristic weather tracking app for iOS 17 with immersive AR atmospheric overlays.</p>
-            </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-            <div class="aspect-video overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-            <button class="flex items-center gap-2 text-white font-bold">
-                                        View Project <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            </div>
-            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Cyber security concept digital code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR_djC1-OCt736YQVcju2qH1aFyo8WsNYa0v_YWaKrklBxMgjSrBGro60rGmEmLK9Pmexrnx6o0HUi4wdALvjPK6oQnkUCNV6WstE8bdCDnJcbyz_Au9mUQC0iZKy_CqmOjpq2dDwazGDMSXmqKTMwQuuKSUWK2ifecWY2WeZ59H9zIzvxtBu3ItvRgS-z0yh40K7AzM4ipgObccXA1HLHk1i_YbHXn4JIzn09cdcTA5D7GQoi5eYbLwhOV2DYS_m9NDf5TCvffqU"/>
-            </div>
-            <div class="p-6">
-            <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">Three.js</span>
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">GSAP</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Cyber Mesh</h3>
-            <p class="text-sm text-gray-400 opacity-60 line-clamp-2">Interactive 3D mesh generation engine for creative agencies and game developers.</p>
-            </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-            <div class="aspect-video overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-            <button class="flex items-center gap-2 text-white font-bold">
-                                        View Project <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            </div>
-            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Data analytics screen on tablet" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChAwGFp8rPIxUy5aLJWX4E_GsEXieOK3kTUpR8-VoTLDLlXoykEA0ArJ9kF20oB90DZTho6eOcdwYGmm6ZWRrJLZ5zD1StS50TW9gEFmVWfv2lnlAT9UcrE-mxxaGl9Npt_zjZKqlgklVozldCR4B6bCwEDB_KocylDTWKeVpTJSaMYbYHTcMwCgMuEpwhTrwJn2M2960MagU2sV-vjFDMwrg1M_LaOgmrnDnjfnq8h2vOOeYQAC33j9hTZ96gQpY883cvxX974KI"/>
-            </div>
-            <div class="p-6">
-            <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">Next.js</span>
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">Stripe</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Aether Commerce</h3>
-            <p class="text-sm text-gray-400 opacity-60 line-clamp-2">High-performance headless e-commerce storefront with instantaneous global search.</p>
-            </div>
-            </div>
-            <!-- Card 5 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-            <div class="aspect-video overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-            <button class="flex items-center gap-2 text-white font-bold">
-                                        View Project <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            </div>
-            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Minimalist architectural shapes in gray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHNyhgM2vJ5MiBlpnNAM5fRuF2PzHyAIZaDyin1uTBHDAQRmDecTwvHG15jPfgxLvZDwg6PezweTgFm0ORRYUg4W3pvwz7tvee__mn0ixzrJUqK8eXFcHO3QNaZISNsQ6s5JWsUPFfaK_cLIbTPqcXFy7hFH4lv8mfseMoPKav_bY8-f6ryrJHeSJnAhp7yrw2h29m0FjL8QqnB5cicFZiOp86kb12aMLdBJKgouUEJEmr358jwQpc7oqIVXOA6P0cbtXdA_5jHZM"/>
-            </div>
-            <div class="p-6">
-            <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">Vue 3</span>
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">Vite</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Luna UI</h3>
-            <p class="text-sm text-gray-400 opacity-60 line-clamp-2">A minimalist design system specifically crafted for space-tech and aerospace startups.</p>
-            </div>
-            </div>
-            <!-- Card 6 -->
-            <div class="glass-card rounded-2xl overflow-hidden group">
-            <div class="aspect-video overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-            <button class="flex items-center gap-2 text-white font-bold">
-                                        View Project <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-            </div>
-            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Techno pattern purple and black gradient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW6A1RxjmwfKLsblaXXQHoWzzRLcRkaERHRfroGQ5HbAk5m4hrU0wVhkDHIxhOoED9xADfUc1YfjG2qZ8TirOAL3OJeXHubFPwYUkQIdyR7-PdGTkI-Y7XQGlSmhtjfXa2HKIVEcoQFQLWYsrQWB7ZES9yAOscgzEvkeo2vf3-7oN6so1onwXwZVVa5o7WjV4NV3LGBNNBd6G5jjw3ohsjXC6tBWUuRbAcmQ9S0b_anIKOONHIGUO870ZllJF1Y5ynXUcbseXf-yI"/>
-            </div>
-            <div class="p-6">
-            <div class="flex gap-2 mb-4">
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">Figma</span>
-            <span class="px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-[10px] font-bold uppercase tracking-wider">UX Design</span>
-            </div>
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Stripe Redesign</h3>
-            <p class="text-sm text-gray-400 opacity-60 line-clamp-2">A conceptual clean-up and simplification of the Stripe developer dashboard.</p>
-            </div>
-            </div>
-            </div>
-            <!-- Footer CTA -->
-            <div class="mt-24 p-6 glass-card rounded-3xl text-center">
-            <h2 class="text-3xl font-bold mb-4">Have a project in mind?</h2>
-            <p class="text-gray-400 opacity-60 mb-8 max-w-md mx-auto">Let's collaborate to build something exceptional. I'm currently available for freelance projects and consulting.</p>
-            <button onclick="window.location.href='about.html#contact'" class="px-8 py-4 bg-primary text-white rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-xl shadow-primary/25">
-                            Let's Talk
-                        </button>
+            <!-- Coming Soon Section (Django Style) -->
+            <div class="flex-grow flex flex-col items-center justify-center text-center py-20 min-h-[60vh]">
+               <!-- Rocket Container -->
+               <div class="relative mb-12 animate-float">
+                  <!-- Atom Balls -->
+                  <div class="atom-container">
+                     <div class="atom-ball ball-1"></div>
+                     <div class="atom-ball ball-2"></div>
+                  </div>
+                  
+                  <div class="rocket-svg-wrapper">
+                     <svg class="w-24 h-24 md:w-32 md:h-32 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C12 2 11 6 8 9C5 12 2 13 2 13L4 15L6 14.5L7 15.5L6.5 17.5L8.5 19.5L10.5 19L11.5 20L11 22C11 22 12 19 15 16C18 13 22 12 22 12C22 12 19 11 16 8C13 5 12 2 12 2Z" fill="currentColor" />
+                        <path d="M9 15C9 15 8.5 17 6.5 17.5L8.5 19.5C9 17.5 11 17 11 17L9 15Z" fill="#7c52f6" />
+                        <circle cx="15" cy="9" r="1.5" fill="#0D0D0D" />
+                     </svg>
+                  </div>
+                  <!-- Rocket Flame/Trail -->
+                  <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                     <div class="w-2 h-8 bg-gradient-to-t from-transparent via-primary/50 to-primary rounded-full animate-pulse"></div>
+                     <div class="w-1.5 h-6 bg-gradient-to-t from-transparent via-primary-light/30 to-primary-light/80 rounded-full animate-pulse delay-75"></div>
+                  </div>
+               </div>
+
+               <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 neon-glow text-white">
+                  Coming Soon
+               </h1>
+               <p class="text-xl md:text-2xl text-gray-400 font-medium max-w-lg mx-auto mb-8">
+                  The mission is underway. We're building something extraordinary behind the scenes.
+               </p>
+               
+               <div class="flex gap-4">
+                  <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest text-primary-light animate-pulse">
+                     Launch Imminent
+                  </span>
+               </div>
+
+               <div class="mt-16">
+                  <a href="index.html" class="text-sm font-bold text-gray-500 hover:text-white transition-colors flex items-center gap-2 group">
+                     <span class="material-symbols-outlined text-base group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                     Back to Orbit
+                  </a>
+               </div>
             </div>
          </div>
       </main>
@@ -332,7 +277,7 @@
         let w, h, particles;
         const PARTICLE_COUNT = 60;
         const CONNECTION_DIST = 120;
-        const SPEED = 0.3;
+        const SPEED = 0.5;
         function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
         function createParticles() {
           particles = [];
