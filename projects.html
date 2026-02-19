@@ -164,23 +164,33 @@
             z-index: 1;
         }
 
-        .rocket-container:hover .galaxy-beam {
-            opacity: 0.8;
-            transform: translate(-50%, -50%) scaleY(1.5);
-            width: 120px;
-            filter: blur(50px);
-            box-shadow: 0 0 150px #5925f4;
-        }
+        @media (min-width: 1024px) {
+            .rocket-container:hover .galaxy-beam {
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scaleY(1.5);
+                width: 120px;
+                filter: blur(50px);
+                box-shadow: 0 0 150px #5925f4;
+            }
 
-        .rocket-container:hover .galaxy-shockwave {
-            animation: shockwave 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
+            .rocket-container:hover .galaxy-shockwave {
+                animation: shockwave 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
 
-        .rocket-container:hover .rocket-svg-wrapper {
-            filter: drop-shadow(0 0 50px #fff);
-            animation: high-speed 0.1s linear infinite;
-            transform: scale(1.1) translateY(-20px);
-            transition: all 0.3s ease;
+            .rocket-container:hover .rocket-svg-wrapper {
+                filter: drop-shadow(0 0 50px #fff);
+                animation: high-speed 0.1s linear infinite;
+                transform: scale(1.1) translateY(-20px);
+                transition: all 0.3s ease;
+            }
+
+            .rocket-container:hover .flame-effect {
+                height: 60px;
+                width: 12px;
+                filter: blur(4px);
+                opacity: 1;
+                animation: flame-thrust 0.05s linear infinite;
+            }
         }
 
         @keyframes high-speed {
@@ -191,13 +201,7 @@
             100% { transform: scale(1.1) translate(0, -20px); }
         }
 
-        .rocket-container:hover .flame-effect {
-            height: 60px;
-            width: 12px;
-            filter: blur(4px);
-            opacity: 1;
-            animation: flame-thrust 0.05s linear infinite;
-        }
+
 
         @keyframes flame-thrust {
             0% { transform: scaleY(1); opacity: 0.8; }
@@ -373,7 +377,9 @@
         // Listen for rocket hover
         const rocket = document.querySelector('.rocket-container');
         if (rocket) {
-          rocket.addEventListener('mouseenter', () => isWarping = true);
+          rocket.addEventListener('mouseenter', () => {
+            if (window.innerWidth >= 1024) isWarping = true;
+          });
           rocket.addEventListener('mouseleave', () => isWarping = false);
         }
 
