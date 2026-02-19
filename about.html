@@ -75,19 +75,25 @@
             box-shadow: 0 0 10px #5925f4, 0 0 20px rgba(89, 37, 244, 0.5);
         }
 
-        /* Custom scrollbar for webkit */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
             background: #0D0D0D; 
         }
         ::-webkit-scrollbar-thumb {
-            background: #2c2249; 
-            border-radius: 4px;
+            background: #5925f4; 
+            border-radius: 20px;
+            border: 3px solid #0D0D0D;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #5925f4; 
+            background: #7c52f6; 
+        }
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #5925f4 #0D0D0D;
         }
       </style>
    </head>
