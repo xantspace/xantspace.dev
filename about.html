@@ -575,11 +575,15 @@
             btnIcon.innerText = 'sync';
             btnIcon.classList.add('animate-spin');
 
-            // Replace these with your actual EmailJS Service ID and Template ID
+            // Send to both templates: Admin notification and Client auto-reply
             const serviceID = 'service_dxuy4bc';
-            const templateID = 'template_0e6utop';
+            const clientTemplateID = 'template_0e6utop';
+            const adminTemplateID = 'template_zdy3dot';
 
-            emailjs.sendForm(serviceID, templateID, this)
+            Promise.all([
+               emailjs.sendForm(serviceID, clientTemplateID, this),
+               emailjs.sendForm(serviceID, adminTemplateID, this)
+            ])
                .then(() => {
                   showNotification(true, "I've received your message and will reply shortly.");
                   contactForm.reset();

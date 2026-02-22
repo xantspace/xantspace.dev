@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://xantspace.com/sitemap.xml
+Sitemap: https://xantspace-dev.vercel.app/sitemap.xml
