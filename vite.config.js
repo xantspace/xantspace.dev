@@ -21,8 +21,17 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        dead_code: true
-      }
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2,
+      },
+      mangle: {
+        toplevel: true,
+        properties: false, // Set to true for even more aggressive obfuscation, but use with caution
+      },
+      format: {
+        comments: false,
+      },
     }
   },
   server: {

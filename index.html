@@ -733,6 +733,61 @@
         createParticles();
         draw();
       })();
+
+      // --- Source Code Protection (Deterrent Only) ---
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+      document.onkeydown = function(e) {
+        if (e.keyCode == 123) return false; // F12
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; // Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; // Ctrl+Shift+J
+        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+      };
+
+      // Disable drag to prevent saving images easily
+      document.oncontextmenu = () => false;
+      document.onselectstart = () => false;
+
+      (function() {
+        const devtools = {
+          isOpen: false,
+          orientation: undefined
+        };
+        const threshold = 160;
+        const emitEvent = (isOpen, orientation) => {
+          window.dispatchEvent(new CustomEvent('devtoolschange', {
+            detail: { isOpen, orientation }
+          }));
+        };
+
+        setInterval(() => {
+          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+          const orientation = widthThreshold ? 'vertical' : 'horizontal';
+
+          if (!(heightThreshold && widthThreshold) &&
+              ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
+            if (!devtools.isOpen || devtools.orientation !== orientation) {
+              emitEvent(true, orientation);
+            }
+            devtools.isOpen = true;
+            devtools.orientation = orientation;
+          } else {
+            if (devtools.isOpen) {
+              emitEvent(false, undefined);
+            }
+            devtools.isOpen = false;
+            devtools.orientation = undefined;
+          }
+        }, 500);
+
+        window.addEventListener('devtoolschange', (e) => {
+          if (e.detail.isOpen) {
+            console.log('%cWait!', 'color: #5925f4; font-size: 50px; font-weight: bold; text-shadow: 2px 2px #000;');
+            console.log('%cExploring the digital future is better through the UI. 🚀', 'font-size: 18px;');
+          }
+        });
+      })();
     </script>
    </body>
 </html>
