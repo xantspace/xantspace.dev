@@ -112,6 +112,19 @@
       .notification-animate {
          animation: slideIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
+
+      /* Typing Animation Cursor */
+      .typing-cursor::after {
+         content: '|';
+         animation: blink 0.8s step-end infinite;
+         color: #5925f4;
+         margin-left: 2px;
+         font-weight: bold;
+      }
+      @keyframes blink {
+         from, to { opacity: 1; }
+         50% { opacity: 0; }
+      }
       </style>
    </head>
    <body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
@@ -258,9 +271,9 @@
                   <div class="glass-panel rounded-2xl p-8 mb-16 border border-white/10 relative overflow-hidden">
                      <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
                      <div class="relative z-10 space-y-4 text-lg text-slate-300 leading-relaxed italic">
-                        <p>I'm Pleasant Johnson, a full-stack web developer based in Abia State, Nigeria. I help businesses establish their online presence through custom websites and web applications.</p>
-                        <p>As a TechRise Cohort 2 Top 50 graduate and Certified Level 3 Backend Developer, I combine technical expertise with creative problem-solving to deliver solutions that drive business growth.</p>
-                        <p>I specialize in Django-based applications, e-commerce platforms, and AI-powered tools. My approach focuses on clean code, user experience, and practical business outcomes.</p>
+                        <p class="typed-text">I'm Pleasant Johnson, a full-stack web developer based in Abia State, Nigeria. I help businesses establish their online presence through custom websites and web applications.</p>
+                        <p class="typed-text">As a TechRise Cohort 2 Top 50 graduate and Certified Level 3 Backend Developer, I combine technical expertise with creative problem-solving to deliver solutions that drive business growth.</p>
+                        <p class="typed-text">I specialize in Django-based applications, e-commerce platforms, and AI-powered tools. My approach focuses on clean code, user experience, and practical business outcomes.</p>
                      </div>
                   </div>
 
@@ -600,6 +613,69 @@
                });
          });
       }
+
+      // Bio Section Typing Animation (Sequential - Mobile Only)
+      document.addEventListener('DOMContentLoaded', () => {
+         const typedElements = [...document.querySelectorAll('.typed-text')];
+         const isMobile = window.innerWidth < 768;
+
+         if (!isMobile) return; // Exit if not mobile
+
+         const typeEffect = (element, text, speed = 40) => {
+            return new Promise((resolve) => {
+               element.innerText = '';
+               element.style.opacity = '1';
+               element.classList.add('typing-cursor');
+               let i = 0;
+               
+               const typing = setInterval(() => {
+                  if (i < text.length) {
+                     element.innerText += text.charAt(i);
+                     i++;
+                  } else {
+                     clearInterval(typing);
+                     element.classList.remove('typing-cursor');
+                     resolve();
+                  }
+               }, speed);
+            });
+         };
+
+         const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+         };
+
+         const containers = new Set();
+         typedElements.forEach(el => containers.add(el.parentElement));
+
+         const sequenceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(async (entry) => {
+               if (entry.isIntersecting && !entry.target.classList.contains('is-typed-group')) {
+                  entry.target.classList.add('is-typed-group');
+                  sequenceObserver.unobserve(entry.target);
+                  
+                  const groupElements = entry.target.querySelectorAll('.typed-text');
+                  for (const el of groupElements) {
+                     const text = el.getAttribute('data-full-text');
+                     await typeEffect(el, text);
+                  }
+               }
+            });
+         }, observerOptions);
+
+         typedElements.forEach(el => {
+            const text = el.innerText.trim();
+            el.setAttribute('data-full-text', text);
+            el.innerText = '';
+            el.style.opacity = '0';
+            el.style.minHeight = '1.5em';
+         });
+
+         containers.forEach(container => {
+            sequenceObserver.observe(container);
+         });
+      });
       // --- Source Code Protection (Deterrent Only) ---
       document.addEventListener('contextmenu', (e) => e.preventDefault());
       document.onkeydown = function(e) {
