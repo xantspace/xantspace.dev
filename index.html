@@ -1,699 +1,1223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="dark" lang="en">
-   <head>
-      <meta charset="utf-8"/>
-      <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-      <title>XantSpace - Creative Developer & Designer Portfolio</title>
-      <meta name="description" content="Portfolio of XantSpace - Crafting immersive digital experiences through code and design. Specializing in web development, UI/UX design, and creative solutions."/>
-      <meta name="keywords" content="web developer, portfolio, UI/UX designer, frontend developer, creative developer, HTML, CSS, JavaScript, TailwindCSS, Python, Django"/>
-      <meta name="author" content="XantSpace"/>
-      <meta name="theme-color" content="#5925f4"/>
-      
-      <!-- Open Graph / Facebook -->
-      <meta property="og:type" content="website"/>
-      <meta property="og:url" content="https://xantspace.com/"/>
-      <meta property="og:title" content="XantSpace - Creative Developer & Designer Portfolio"/>
-      <meta property="og:description" content="Crafting immersive digital experiences through code and design. Bridging the gap between aesthetic excellence and technical performance."/>
-      <meta property="og:image" content="https://xantspace.com/og-image.jpg"/>
-      
-      <!-- Twitter -->
-      <meta property="twitter:card" content="summary_large_image"/>
-      <meta property="twitter:url" content="https://xantspace.com/"/>
-      <meta property="twitter:title" content="XantSpace - Creative Developer & Designer Portfolio"/>
-      <meta property="twitter:description" content="Crafting immersive digital experiences through code and design. Bridging the gap between aesthetic excellence and technical performance."/>
-      <meta property="twitter:image" content="https://xantspace.com/og-image.jpg"/>
-      
-      <!-- PWA -->
-      <link rel="manifest" href="/manifest.json"/>
-      <link rel="icon" type="image/svg+xml" href="/vite.svg"/>
-      <meta name="mobile-web-app-capable" content="yes"/>
-      <meta name="apple-mobile-web-app-capable" content="yes"/>
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-      
-      <!-- Fonts -->
-      <link href="https://fonts.googleapis.com" rel="preconnect"/>
-      <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-      <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-      <!-- Theme Config -->
-      <script id="tailwind-config">
-         tailwind.config = {
-           darkMode: "class",
-           theme: {
-             extend: {
-               colors: {
-                 "primary": "#5925f4",
-                 "primary-light": "#7c52f6",
-                 "background-light": "#f6f5f8",
-                 "background-dark": "#0D0D0D",
-                 "surface-dark": "#161616",
-               },
-               fontFamily: {
-                 "display": ["Space Grotesk", "sans-serif"]
-               },
-               borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
-               boxShadow: {
-                   'glow': '0 0 80px -20px rgba(89, 37, 244, 0.4)',
-                   'glow-sm': '0 0 20px -5px rgba(89, 37, 244, 0.3)',
-               }
-             },
-           },
-         }
-      </script>
-      <style>
-         /* Custom Utilities for Glassmorphism & Gradients */
-         .glass-panel {
-         background: rgba(255, 255, 255, 0.03);
-         backdrop-filter: blur(12px);
-         -webkit-backdrop-filter: blur(12px);
-         border: 1px solid rgba(255, 255, 255, 0.08);
-         }
-         .nav-glass {
-         background: rgba(13, 13, 13, 0.7);
-         backdrop-filter: blur(20px);
-         -webkit-backdrop-filter: blur(20px);
-         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-         }
-         .gradient-orb-1 {
-         background: radial-gradient(circle, rgba(89, 37, 244, 0.15) 0%, rgba(13, 13, 13, 0) 70%);
-         }
-         .gradient-orb-2 {
-         background: radial-gradient(circle, rgba(45, 120, 255, 0.1) 0%, rgba(13, 13, 13, 0) 70%);
-         }
-          .text-gradient {
-          background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          }
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>XantSpace - Creative Developer & Designer Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of XantSpace - Crafting immersive digital experiences through code and design. Specializing in web development, UI/UX design, and creative solutions."
+    />
+    <meta
+      name="keywords"
+      content="web developer, portfolio, UI/UX designer, frontend developer, creative developer, HTML, CSS, JavaScript, TailwindCSS, Python, Django"
+    />
+    <meta name="author" content="XantSpace" />
+    <meta name="theme-color" content="#5925f4" />
 
-          /* Marquee Tech Stack */
-          @keyframes marquee-scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          @keyframes marquee-scroll-right {
-            0% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
-          }
-          .marquee-container {
-            width: 100%;
-            overflow: hidden;
-          }
-          .marquee-track {
-            display: flex;
-            width: max-content;
-            will-change: transform;
-          }
-          .marquee-left {
-            animation: marquee-scroll-left 25s linear infinite;
-          }
-          .marquee-right {
-            animation: marquee-scroll-right 25s linear infinite;
-          }
-          .marquee-container:hover .marquee-track {
-            animation-play-state: paused;
-          }
-          .marquee-pill {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 28px;
-            border-radius: 0.5rem;
-            background: #131313;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            white-space: nowrap;
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: #d1d5db;
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-            flex-shrink: 0;
-          }
-          .marquee-pill:hover {
-            border-color: rgba(89, 37, 244, 0.4);
-            box-shadow: 0 0 20px -5px rgba(89, 37, 244, 0.25);
-            transform: translateY(-2px);
-          }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xantspace.com/" />
+    <meta
+      property="og:title"
+      content="XantSpace - Creative Developer & Designer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Crafting immersive digital experiences through code and design. Bridging the gap between aesthetic excellence and technical performance."
+    />
+    <meta property="og:image" content="https://xantspace.com/og-image.jpg" />
 
-          /* Skill Progress Bars */
-          .skill-bar-bg {
-            width: 100%;
-            height: 10px;
-            background: #1E1E24;
-            border-radius: 999px;
-            overflow: hidden;
-          }
-          .skill-bar-fill {
-            height: 100%;
-            width: 0%;
-            border-radius: 999px;
-            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-            box-shadow: 0 0 18px rgba(89, 37, 244, 0.35), 0 0 6px rgba(255,255,255,0.15);
-            position: relative;
-            overflow: hidden;
-          }
-          .skill-bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-              90deg,
-              transparent 0%,
-              rgba(255, 255, 255, 0.15) 15%,
-              rgba(255, 255, 255, 0.7) 50%,
-              rgba(255, 255, 255, 0.15) 85%,
-              transparent 100%
-            );
-            animation: beam-flow 2s linear infinite;
-          }
-          @keyframes beam-flow {
-            0% { left: -100%; }
-            100% { left: 100%; }
-          }
-          .skill-bar-fill.animate {
-            /* width is set dynamically via JS */
-          }
-          .skill-bar-item {
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-          }
-          .skill-bar-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://xantspace.com/" />
+    <meta
+      property="twitter:title"
+      content="XantSpace - Creative Developer & Designer Portfolio"
+    />
+    <meta
+      property="twitter:description"
+      content="Crafting immersive digital experiences through code and design. Bridging the gap between aesthetic excellence and technical performance."
+    />
+    <meta
+      property="twitter:image"
+      content="https://xantspace.com/og-image.jpg"
+    />
 
-          /* Custom Scrollbar */
-          ::-webkit-scrollbar {
-            width: 10px;
-          }
-          ::-webkit-scrollbar-track {
-            background: #0D0D0D;
-          }
-          ::-webkit-scrollbar-thumb {
-            background: #5925f4;
-            border-radius: 20px;
-            border: 3px solid #0D0D0D;
-          }
-          ::-webkit-scrollbar-thumb:hover {
-            background: #7c52f6;
-          }
-          /* Firefox */
-          * {
-            scrollbar-width: thin;
-            scrollbar-color: #5925f4 #0D0D0D;
-          }
-       </style>
-   </head>
-   <body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
-      <!-- Ambient Background Gradients -->
-      <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-         <div class="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] gradient-orb-1 rounded-full mix-blend-screen opacity-60"></div>
-         <div class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] gradient-orb-2 rounded-full mix-blend-screen opacity-50"></div>
-         <div class="absolute -bottom-[20%] left-[20%] w-[900px] h-[900px] gradient-orb-1 rounded-full mix-blend-screen opacity-40"></div>
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Config -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5925f4",
+              "primary-light": "#7c52f6",
+              "background-light": "#f6f5f8",
+              "background-dark": "#0D0D0D",
+              "surface-dark": "#161616",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              full: "9999px",
+            },
+            boxShadow: {
+              glow: "0 0 80px -20px rgba(89, 37, 244, 0.4)",
+              "glow-sm": "0 0 20px -5px rgba(89, 37, 244, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom Utilities for Glassmorphism & Gradients */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .nav-glass {
+        background: rgba(13, 13, 13, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .gradient-orb-1 {
+        background: radial-gradient(
+          circle,
+          rgba(89, 37, 244, 0.15) 0%,
+          rgba(13, 13, 13, 0) 70%
+        );
+      }
+      .gradient-orb-2 {
+        background: radial-gradient(
+          circle,
+          rgba(45, 120, 255, 0.1) 0%,
+          rgba(13, 13, 13, 0) 70%
+        );
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Marquee Tech Stack */
+      @keyframes marquee-scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes marquee-scroll-right {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+      }
+      .marquee-track {
+        display: flex;
+        width: max-content;
+        will-change: transform;
+      }
+      .marquee-left {
+        animation: marquee-scroll-left 25s linear infinite;
+      }
+      .marquee-right {
+        animation: marquee-scroll-right 25s linear infinite;
+      }
+      .marquee-container:hover .marquee-track {
+        animation-play-state: paused;
+      }
+      .marquee-pill {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 28px;
+        border-radius: 0.5rem;
+        background: #131313;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        white-space: nowrap;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: #d1d5db;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s,
+          transform 0.3s;
+        flex-shrink: 0;
+      }
+      .marquee-pill:hover {
+        border-color: rgba(89, 37, 244, 0.4);
+        box-shadow: 0 0 20px -5px rgba(89, 37, 244, 0.25);
+        transform: translateY(-2px);
+      }
+
+      /* Skill Progress Bars */
+      .skill-bar-bg {
+        width: 100%;
+        height: 10px;
+        background: #1e1e24;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .skill-bar-fill {
+        height: 100%;
+        width: 0%;
+        border-radius: 999px;
+        transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow:
+          0 0 18px rgba(89, 37, 244, 0.35),
+          0 0 6px rgba(255, 255, 255, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+      .skill-bar-fill::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.15) 15%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(255, 255, 255, 0.15) 85%,
+          transparent 100%
+        );
+        animation: beam-flow 2s linear infinite;
+      }
+      @keyframes beam-flow {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+      .skill-bar-fill.animate {
+        /* width is set dynamically via JS */
+      }
+      .skill-bar-item {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .skill-bar-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0d0d0d;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #5925f4;
+        border-radius: 20px;
+        border: 3px solid #0d0d0d;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7c52f6;
+      }
+      /* Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #5925f4 #0d0d0d;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col"
+  >
+    <!-- Ambient Background Gradients -->
+    <div
+      class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
+    >
+      <div
+        class="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] gradient-orb-1 rounded-full mix-blend-screen opacity-60"
+      ></div>
+      <div
+        class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] gradient-orb-2 rounded-full mix-blend-screen opacity-50"
+      ></div>
+      <div
+        class="absolute -bottom-[20%] left-[20%] w-[900px] h-[900px] gradient-orb-1 rounded-full mix-blend-screen opacity-40"
+      ></div>
+    </div>
+    <!-- Particle Canvas -->
+    <canvas
+      id="particle-canvas"
+      class="fixed top-0 left-0 w-full h-full pointer-events-none z-[1]"
+    ></canvas>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-glass transition-all duration-300">
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a class="flex items-center gap-2 group" href="#">
+          <div
+            class="size-8 rounded bg-primary flex items-center justify-center text-white shadow-glow-sm"
+          >
+            <span class="font-bold text-lg">X</span>
+          </div>
+          <span
+            class="font-bold text-lg tracking-tight group-hover:text-primary-light transition-colors"
+            >XantSpace</span
+          >
+        </a>
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="projects.html"
+            >Work</a
+          >
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="#stack"
+            >Stack</a
+          >
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="about.html"
+            >About</a
+          >
+        </div>
+        <!-- CTA & Mobile Menu -->
+        <div class="flex items-center gap-4">
+          <button
+            onclick="window.location.href = 'about.html#contact'"
+            class="hidden md:flex h-10 px-5 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-sm font-bold tracking-wide transition-all shadow-glow-sm hover:shadow-glow transform hover:-translate-y-0.5"
+          >
+            Let's Talk
+          </button>
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-white hover:text-primary transition-colors"
+          >
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
       </div>
-      <!-- Particle Canvas -->
-      <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[1]"></canvas>
-      <!-- Navigation -->
-      <nav class="fixed top-0 w-full z-50 nav-glass transition-all duration-300">
-         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a class="flex items-center gap-2 group" href="#">
-               <div class="size-8 rounded bg-primary flex items-center justify-center text-white shadow-glow-sm">
-                  <span class="font-bold text-lg">X</span>
-               </div>
-               <span class="font-bold text-lg tracking-tight group-hover:text-primary-light transition-colors">XantSpace</span>
-            </a>
-            <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-10">
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="index.html">Home</a>
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="projects.html">Work</a>
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="#stack">Stack</a>
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="about.html">About</a>
-
-            </div>
-            <!-- CTA & Mobile Menu -->
-            <div class="flex items-center gap-4">
-               <button onclick="window.location.href='about.html#contact'" class="hidden md:flex h-10 px-5 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-sm font-bold tracking-wide transition-all shadow-glow-sm hover:shadow-glow transform hover:-translate-y-0.5">
-               Let's Talk
-               </button>
-               <button id="mobile-menu-btn" class="md:hidden p-2 text-white hover:text-primary transition-colors">
-               <span class="material-symbols-outlined">menu</span>
-               </button>
-            </div>
-         </div>
+    </nav>
+    <!-- Mobile Sidebar -->
+    <div
+      id="mobile-sidebar"
+      class="fixed top-0 right-0 w-[70%] h-full bg-[#0D0D0D] p-6 z-[60] transform translate-x-full transition-transform duration-300 border-l border-white/5 shadow-2xl flex flex-col gap-8"
+    >
+      <div class="flex items-center justify-between mb-8">
+        <span class="font-bold text-xl text-white">XantSpace</span>
+        <button
+          id="mobile-close-btn"
+          class="p-2 text-gray-400 hover:text-white transition-colors"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6">
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="projects.html"
+          >Work</a
+        >
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="#stack"
+          >Stack</a
+        >
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="about.html"
+          >About</a
+        >
       </nav>
-      <!-- Mobile Sidebar -->
-      <div id="mobile-sidebar" class="fixed top-0 right-0 w-[70%] h-full bg-[#0D0D0D] p-6 z-[60] transform translate-x-full transition-transform duration-300 border-l border-white/5 shadow-2xl flex flex-col gap-8">
-            <div class="flex items-center justify-between mb-8">
-                <span class="font-bold text-xl text-white">XantSpace</span>
-                <button id="mobile-close-btn" class="p-2 text-gray-400 hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </div>
-             <nav class="flex flex-col gap-6">
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="index.html">Home</a>
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="projects.html">Work</a>
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="#stack">Stack</a>
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="about.html">About</a>
-
-            </nav>
-            <div class="mt-auto pt-8 border-t border-white/10">
-                 <button onclick="window.location.href='about.html#contact'" class="w-full h-12 rounded-lg bg-primary hover:bg-primary-light text-white font-bold transition-all shadow-glow-sm">
-                    Let's Talk
-                 </button>
-            </div>
+      <div class="mt-auto pt-8 border-t border-white/10">
+        <button
+          onclick="window.location.href = 'about.html#contact'"
+          class="w-full h-12 rounded-lg bg-primary hover:bg-primary-light text-white font-bold transition-all shadow-glow-sm"
+        >
+          Let's Talk
+        </button>
       </div>
-      <!-- Main Content -->
-      <main class="relative z-10 flex-grow flex flex-col pt-20 pb-20">
-         <!-- Hero Section -->
-         <section id="hero" class="layout-container max-w-7xl mx-auto px-6 py-12 w-full">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[calc(80vh-140px)]">
-               <!-- Text Content (Left) -->
-               <div class="lg:col-span-7 flex flex-col gap-8 text-left order-2 lg:order-1">
-                  <div class="flex flex-col gap-4">
-                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 w-fit">
-                        <span class="flex h-2 w-2 relative">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                        </span>
-                        <span class="text-xs font-medium text-gray-300 tracking-wide uppercase">Available for work</span>
-                     </div>
-                     <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9]">
-                        <span class="text-gradient">XantSpace</span>
-                     </h1>
-                     <p class="text-lg md:text-xl text-gray-400 font-light max-w-xl leading-relaxed">
-                        Crafting immersive digital experiences through code and design. Bridging the gap between aesthetic excellence and technical performance.
-                     </p>
-                  </div>
-                  <div class="flex flex-wrap gap-4 mt-2">
-                     <button onclick="window.location.href='projects.html'" class="group relative flex h-12 px-8 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-base font-bold tracking-wide overflow-hidden transition-all shadow-glow hover:shadow-glow transform hover:-translate-y-1">
-                        <span class="relative z-10 flex items-center gap-2">
-                        View Projects
-                        <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                        </span>
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                     </button>
-                     <button onclick="window.location.href='about.html#contact'" class="flex h-12 px-8 items-center justify-center rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all backdrop-blur-sm">
-                     Contact Me
-                     </button>
-                  </div>
-                  <!-- Social Proof / Stats -->
-                  <div class="flex items-center gap-8 mt-8 border-t border-white/10 pt-8">
-                     <div>
-                        <p class="text-2xl font-bold text-white">10+</p>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider">Projects</p>
-                     </div>
-                     <div>
-                        <p class="text-2xl font-bold text-white">3★</p>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider">Rating</p>
-                     </div>
-                     <div>
-                        <p class="text-2xl font-bold text-white">2yrs</p>
-                        <p class="text-xs text-gray-500 uppercase tracking-wider">Experience</p>
-                     </div>
-                  </div>
-               </div>
-               <!-- Visual Asset (Right) -->
-               <div class="lg:col-span-5 relative order-1 lg:order-2 flex justify-center lg:justify-end">
-                  <!-- Glass Frame Container -->
-                  <div class="relative w-full max-w-[500px] aspect-[4/5] rounded-2xl glass-panel p-2 shadow-2xl shadow-black/50 overflow-hidden group">
-                     <!-- Inner Border/Container -->
-                     <div class="relative w-full h-full rounded-xl overflow-hidden bg-surface-dark/50">
-                        <!-- Background Glow behind image -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-primary/20 via-transparent to-transparent blur-2xl"></div>
-                        <!-- Main Visual Image -->
-                        <img src="src/images/portrait.png" alt="Hero Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <!-- Overlay Content on Image (Optional Badge) -->
-                        <div class="absolute bottom-6 right-6">
-                           <div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-3">
-                              <span class="material-symbols-outlined text-primary">palette</span>
-                              <div>
-                                 <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Current Focus</p>
-                                 <p class="text-sm text-white font-bold">Full-Stack Web Development <br> AI-Powered Applications <br> SaaS Products</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- Decorative Elements on Frame -->
-                     <div class="absolute -top-1 -right-1 w-20 h-20 bg-gradient-to-bl from-primary/30 to-transparent blur-xl rounded-full pointer-events-none"></div>
-                     <div class="absolute -bottom-1 -left-1 w-20 h-20 bg-gradient-to-tr from-blue-500/20 to-transparent blur-xl rounded-full pointer-events-none"></div>
-                  </div>
-               </div>
+    </div>
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow flex flex-col pt-20 pb-20">
+      <!-- Hero Section -->
+      <section
+        id="hero"
+        class="layout-container max-w-7xl mx-auto px-6 py-12 w-full"
+      >
+        <div
+          class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center min-h-[calc(80vh-140px)]"
+        >
+          <!-- Text Content (Left) -->
+          <div
+            class="lg:col-span-7 flex flex-col gap-8 text-left order-2 lg:order-1"
+          >
+            <div class="flex flex-col gap-4">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 w-fit"
+              >
+                <span class="flex h-2 w-2 relative">
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
+                  ></span>
+                  <span
+                    class="relative inline-flex rounded-full h-2 w-2 bg-green-500"
+                  ></span>
+                </span>
+                <span
+                  class="text-xs font-medium text-gray-300 tracking-wide uppercase"
+                  >Available for work</span
+                >
+              </div>
+              <h1
+                class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9]"
+              >
+                <span class="text-gradient">XantSpace</span>
+              </h1>
+              <p
+                class="text-lg md:text-xl text-gray-400 font-light max-w-xl leading-relaxed"
+              >
+                Crafting immersive digital experiences through code and design.
+                Bridging the gap between aesthetic excellence and technical
+                performance.
+              </p>
             </div>
-         </section>
-
-         <!-- Selected Projects Section -->
-         <section id="work" class="layout-container max-w-7xl mx-auto px-6 py-24 w-full">
-            <div class="flex flex-col gap-16">
-               <!-- Section Header -->
-               <div class="flex flex-col gap-4 border-l-4 border-primary pl-6">
-                  <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Selected Projects</h2>
-                  <p class="text-gray-400 max-w-2xl text-lg">A curation of interface designs and technical implementations focused on scalability and user experience.</p>
-               </div>
-
-               <!-- Projects Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-                  <!-- Project Card 1: Nova Finance -->
-                  <div class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col">
-                     <div class="aspect-video w-full overflow-hidden relative">
-                        <video src="src/videos/west.mp4" autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></video>
-                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
-                        <div class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black">
-                           <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                        </div>
-                     </div>
-                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
-                        <div>
-                           <h3 class="text-sm md:text-base font-bold text-white mb-1">Hotel booking site</h3>
-                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">Full-featured hotel booking platform with real-time availability, custom admin dashboard, and mobile-responsive design. Built for West-Swiss Hotel.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">HTML</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Tailwind CSS</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">JavaScript</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Django</span>
-                        </div>
-                     </div>
-                  </div>
-
-                  <!-- Project Card 2: Luxe E-Commerce -->
-                  <div class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col">
-                     <div class="aspect-video w-full overflow-hidden relative">
-                        <video src="src/videos/wig.mp4" autoplay loop muted playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"></video>
-                        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
-                        <div class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black">
-                           <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                        </div>
-                     </div>
-                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
-                        <div>
-                           <h3 class="text-sm md:text-base font-bold text-white mb-1">Wig E-commerce</h3>
-                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">Luxury wig e-commerce platform with AI chatbot integration, shopping cart, secure checkout, and inventory management.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Django</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Tailwind CSS</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">HTML</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">JavaScript</span>
-                        </div>
-                     </div>
-                  </div>
-
-                  <!-- Project Card 3: Vitality Health -->
-                  <div class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col">
-                     <div class="aspect-video w-full overflow-hidden relative flex bg-[#0f3d32]">
-                        <!-- Simulating Mobile Screens -->
-                        <div class="relative w-1/3 h-full border-r border-white/5 bg-[#10b981]/20"></div>
-                        <div class="relative w-1/3 h-full border-r border-white/5 bg-[#10b981]/40 flex items-center justify-center">
-                           <div class="text-[120px] font-bold text-white/20">O</div>
-                        </div>
-                        <div class="relative w-1/3 h-full bg-[#10b981]/20"></div>
-
-                        <div class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black">
-                           <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                        </div>
-                     </div>
-                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
-                        <div>
-                           <h3 class="text-sm md:text-base font-bold text-white mb-1">1ST Geomatics site</h3>
-                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">Professional mobile-responsive website for geomatics and engineering firm with service showcase and consultation booking.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">HTML</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">CSS</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">JavaScript</span>
-                        </div>
-                     </div>
-                  </div>
-
-                   <!-- Project Card 4: DeFi Wallet -->
-                   <div class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col">
-                     <div class="aspect-video w-full overflow-hidden relative bg-[#1E1E24] flex items-center justify-center">
-                        <!-- Wallet Graphic -->
-                        <div class="w-2/3 h-3/4 bg-gradient-to-b from-gray-700 to-gray-800 rounded-lg shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500 border-t border-white/10"></div>
-                        
-                        <div class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black">
-                           <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                        </div>
-                     </div>
-                     <div class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]">
-                        <div>
-                           <h3 class="text-sm md:text-base font-bold text-white mb-1">Klina AI</h3>
-                           <p class="text-gray-400 text-xs leading-relaxed hidden md:block">AI-powered data cleaning tool that transforms messy CSV files using natural language prompts. Built with Django and Google Gemini API.</p>
-                        </div>
-                        <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">Python</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">TailwindCSS</span>
-                           <span class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide">JavaScript</span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-               <!-- View All Button -->
-               <div class="flex justify-center mt-4">
-                  <button onclick="window.location.href='projects.html'" class="group flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-sm font-bold tracking-wide text-white uppercase">
-                     View All Archives
-                     <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                  </button>
-               </div>
+            <div class="flex flex-wrap gap-4 mt-2">
+              <button
+                onclick="window.location.href = 'projects.html'"
+                class="group relative flex h-12 px-8 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-base font-bold tracking-wide overflow-hidden transition-all shadow-glow hover:shadow-glow transform hover:-translate-y-1"
+              >
+                <span class="relative z-10 flex items-center gap-2">
+                  View Projects
+                  <span
+                    class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform"
+                    >arrow_forward</span
+                  >
+                </span>
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-primary to-primary-light opacity-0 group-hover:opacity-100 transition-opacity"
+                ></div>
+              </button>
+              <button
+                onclick="window.location.href = 'about.html#contact'"
+                class="flex h-12 px-8 items-center justify-center rounded-lg border border-white/20 hover:border-white/40 hover:bg-white/5 text-white text-base font-bold tracking-wide transition-all backdrop-blur-sm"
+              >
+                Contact Me
+              </button>
             </div>
-         </section>
-
-          <!-- Tech Stack Section -->
-          <section id="stack" class="py-24 w-full overflow-hidden">
-             <div class="max-w-7xl mx-auto px-6 mb-16">
-                <div class="flex flex-col gap-4 border-l-4 border-primary pl-6">
-                   <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Tech Stack & Tools</h2>
-                </div>
-             </div>
-
-             <!-- Marquee Row 1 — scrolls LEFT -->
-             <div class="marquee-container relative mb-5">
-                <div class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none"></div>
-                <div class="marquee-track marquee-left flex gap-5">
-                   <!-- Set A -->
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-orange-500">html</span><span>HTML</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-500">css</span><span>CSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-cyan-400">style</span><span>TailwindCSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-400">terminal</span><span>Python</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-green-600">dns</span><span>Django</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-yellow-400">javascript</span><span>Javascript</span></div>
-                   <!-- Duplicate Set A for seamless loop -->
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-orange-500">html</span><span>HTML</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-500">css</span><span>CSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-cyan-400">style</span><span>TailwindCSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-400">terminal</span><span>Python</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-green-600">dns</span><span>Django</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-yellow-400">javascript</span><span>Javascript</span></div>
-                </div>
-             </div>
-
-             <!-- Marquee Row 2 — scrolls RIGHT -->
-             <div class="marquee-container relative">
-                <div class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none"></div>
-                <div class="marquee-track marquee-right flex gap-5">
-                   <!-- Set B -->
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-yellow-400">javascript</span><span>Javascript</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-green-600">dns</span><span>Django</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-400">terminal</span><span>Python</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-cyan-400">style</span><span>TailwindCSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-500">css</span><span>CSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-orange-500">html</span><span>HTML</span></div>
-                   <!-- Duplicate Set B for seamless loop -->
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-yellow-400">javascript</span><span>Javascript</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-green-600">dns</span><span>Django</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-400">terminal</span><span>Python</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-cyan-400">style</span><span>TailwindCSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-blue-500">css</span><span>CSS</span></div>
-                   <div class="marquee-pill"><span class="material-symbols-outlined text-orange-500">html</span><span>HTML</span></div>
+            <!-- Social Proof / Stats -->
+            <div
+              class="flex items-center gap-8 mt-8 border-t border-white/10 pt-8"
+            >
+              <div>
+                <p class="text-2xl font-bold text-white">10+</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">
+                  Projects
+                </p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-white">3★</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">
+                  Rating
+                </p>
+              </div>
+              <div>
+                <p class="text-2xl font-bold text-white">2yrs</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">
+                  Experience
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Visual Asset (Right) -->
+          <div
+            class="lg:col-span-5 relative order-1 lg:order-2 flex justify-center lg:justify-end"
+          >
+            <!-- Glass Frame Container -->
+            <div
+              class="relative w-full max-w-[500px] aspect-[4/5] rounded-2xl glass-panel p-2 shadow-2xl shadow-black/50 overflow-hidden group"
+            >
+              <!-- Inner Border/Container -->
+              <div
+                class="relative w-full h-full rounded-xl overflow-hidden bg-surface-dark/50"
+              >
+                <!-- Background Glow behind image -->
+                <div
+                  class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-primary/20 via-transparent to-transparent blur-2xl"
+                ></div>
+                <!-- Main Visual Image -->
+                <img
+                  src="src/images/portrait.png"
+                  alt="Hero Image"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <!-- Overlay Content on Image (Optional Badge) -->
+                <div class="absolute bottom-6 right-6">
+                  <div
+                    class="glass-panel px-4 py-2 rounded-lg flex items-center gap-3"
+                  >
+                    <span class="material-symbols-outlined text-primary"
+                      >palette</span
+                    >
+                    <div>
+                      <p
+                        class="text-xs text-gray-400 font-medium uppercase tracking-wider"
+                      >
+                        Current Focus
+                      </p>
+                      <p class="text-sm text-white font-bold">
+                        Full-Stack Web Development <br />
+                        AI-Powered Applications <br />
+                        SaaS Products
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-             <!-- Proficiency Progress Bars -->
-             <div class="max-w-7xl mx-auto px-6 mt-20">
-                <h3 class="text-xl font-bold text-white mb-8 tracking-tight">Proficiency</h3>
-                <div id="skill-bars" class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
-
-                   <!-- HTML - 90% -->
-                   <div class="skill-bar-item">
-                      <div class="flex items-center justify-between mb-2">
-                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-orange-500 text-lg">html</span>
-                            <span class="text-sm font-bold text-gray-300">HTML</span>
-                         </div>
-                         <span class="text-xs font-bold text-gray-500">90%</span>
-                      </div>
-                      <div class="skill-bar-bg">
-                         <div class="skill-bar-fill" data-width="90" style="background: linear-gradient(90deg, #f97316, #fb923c);"></div>
-                      </div>
-                   </div>
-
-                   <!-- CSS - 80% -->
-                   <div class="skill-bar-item">
-                      <div class="flex items-center justify-between mb-2">
-                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-blue-500 text-lg">css</span>
-                            <span class="text-sm font-bold text-gray-300">CSS</span>
-                         </div>
-                         <span class="text-xs font-bold text-gray-500">80%</span>
-                      </div>
-                      <div class="skill-bar-bg">
-                         <div class="skill-bar-fill" data-width="80" style="background: linear-gradient(90deg, #3b82f6, #60a5fa);"></div>
-                      </div>
-                   </div>
-
-                   <!-- TailwindCSS - 70% -->
-                   <div class="skill-bar-item">
-                      <div class="flex items-center justify-between mb-2">
-                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-cyan-400 text-lg">style</span>
-                            <span class="text-sm font-bold text-gray-300">TailwindCSS</span>
-                         </div>
-                         <span class="text-xs font-bold text-gray-500">70%</span>
-                      </div>
-                      <div class="skill-bar-bg">
-                         <div class="skill-bar-fill" data-width="70" style="background: linear-gradient(90deg, #22d3ee, #67e8f9);"></div>
-                      </div>
-                   </div>
-
-                   <!-- Django - 65% -->
-                   <div class="skill-bar-item">
-                      <div class="flex items-center justify-between mb-2">
-                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-green-600 text-lg">dns</span>
-                            <span class="text-sm font-bold text-gray-300">Django</span>
-                         </div>
-                         <span class="text-xs font-bold text-gray-500">65%</span>
-                      </div>
-                      <div class="skill-bar-bg">
-                         <div class="skill-bar-fill" data-width="65" style="background: linear-gradient(90deg, #16a34a, #4ade80);"></div>
-                      </div>
-                   </div>
-
-                   <!-- Python - 60% -->
-                   <div class="skill-bar-item">
-                      <div class="flex items-center justify-between mb-2">
-                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-blue-400 text-lg">terminal</span>
-                            <span class="text-sm font-bold text-gray-300">Python</span>
-                         </div>
-                         <span class="text-xs font-bold text-gray-500">60%</span>
-                      </div>
-                      <div class="skill-bar-bg">
-                         <div class="skill-bar-fill" data-width="60" style="background: linear-gradient(90deg, #60a5fa, #93c5fd);"></div>
-                      </div>
-                   </div>
-
-                   <!-- Javascript - 40% -->
-                   <div class="skill-bar-item">
-                      <div class="flex items-center justify-between mb-2">
-                         <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-yellow-400 text-lg">javascript</span>
-                            <span class="text-sm font-bold text-gray-300">Javascript</span>
-                         </div>
-                         <span class="text-xs font-bold text-gray-500">40%</span>
-                      </div>
-                      <div class="skill-bar-bg">
-                         <div class="skill-bar-fill" data-width="40" style="background: linear-gradient(90deg, #facc15, #fde047);"></div>
-                      </div>
-                   </div>
-
-                </div>
-             </div>
-           </section>
-      </main>
-      <!-- Footer Strip (Simple) -->
-      <footer class="w-full border-t border-white/5 py-6 mt-auto">
-         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-            <p>© 2024 XantSpace. All rights reserved.</p>
-            <div class="flex gap-6 mt-2 md:mt-0">
-               <a class="hover:text-white transition-colors" href="#">Twitter</a>
-               <a class="hover:text-white transition-colors" href="#">LinkedIn</a>
-               <a class="hover:text-white transition-colors" href="#">GitHub</a>
-               <a class="hover:text-white transition-colors" href="#">Dribbble</a>
+              <!-- Decorative Elements on Frame -->
+              <div
+                class="absolute -top-1 -right-1 w-20 h-20 bg-gradient-to-bl from-primary/30 to-transparent blur-xl rounded-full pointer-events-none"
+              ></div>
+              <div
+                class="absolute -bottom-1 -left-1 w-20 h-20 bg-gradient-to-tr from-blue-500/20 to-transparent blur-xl rounded-full pointer-events-none"
+              ></div>
             </div>
-         </div>
-      </footer>
-   <script type="module" src="/src/main.js"></script>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Projects Section -->
+      <section
+        id="work"
+        class="layout-container max-w-7xl mx-auto px-6 py-24 w-full"
+      >
+        <div class="flex flex-col gap-16">
+          <!-- Section Header -->
+          <div class="flex flex-col gap-4 border-l-4 border-primary pl-6">
+            <h2
+              class="text-4xl md:text-5xl font-bold tracking-tight text-white"
+            >
+              Selected Projects
+            </h2>
+            <p class="text-gray-400 max-w-2xl text-lg">
+              A curation of interface designs and technical implementations
+              focused on scalability and user experience.
+            </p>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+            <!-- Project Card 1: Nova Finance -->
+            <div
+              class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col"
+            >
+              <div class="aspect-video w-full overflow-hidden relative">
+                <video
+                  src="src/videos/west.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                ></video>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+
+                <div
+                  class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_outward</span
+                  >
+                </div>
+              </div>
+              <div
+                class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]"
+              >
+                <div>
+                  <h3 class="text-sm md:text-base font-bold text-white mb-1">
+                    Hotel booking site
+                  </h3>
+                  <p
+                    class="text-gray-400 text-xs leading-relaxed hidden md:block"
+                  >
+                    Full-featured hotel booking platform with real-time
+                    availability, custom admin dashboard, and mobile-responsive
+                    design. Built for West-Swiss Hotel.
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >Tailwind CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >Django</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 2: Luxe E-Commerce -->
+            <div
+              class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col"
+            >
+              <div class="aspect-video w-full overflow-hidden relative">
+                <video
+                  src="src/videos/wig.mp4"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                ></video>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                ></div>
+
+                <div
+                  class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_outward</span
+                  >
+                </div>
+              </div>
+              <div
+                class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]"
+              >
+                <div>
+                  <h3 class="text-sm md:text-base font-bold text-white mb-1">
+                    Wig E-commerce
+                  </h3>
+                  <p
+                    class="text-gray-400 text-xs leading-relaxed hidden md:block"
+                  >
+                    Luxury wig e-commerce platform with AI chatbot integration,
+                    shopping cart, secure checkout, and inventory management.
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >Django</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >Tailwind CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >JavaScript</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 3: Vitality Health -->
+            <div
+              class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col"
+            >
+              <div
+                class="aspect-video w-full overflow-hidden relative flex bg-[#0f3d32]"
+              >
+                <!-- Simulating Mobile Screens -->
+                <div
+                  class="relative w-1/3 h-full border-r border-white/5 bg-[#10b981]/20"
+                ></div>
+                <div
+                  class="relative w-1/3 h-full border-r border-white/5 bg-[#10b981]/40 flex items-center justify-center"
+                >
+                  <div class="text-[120px] font-bold text-white/20">O</div>
+                </div>
+                <div class="relative w-1/3 h-full bg-[#10b981]/20"></div>
+
+                <div
+                  class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_outward</span
+                  >
+                </div>
+              </div>
+              <div
+                class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]"
+              >
+                <div>
+                  <h3 class="text-sm md:text-base font-bold text-white mb-1">
+                    1ST Geomatics site
+                  </h3>
+                  <p
+                    class="text-gray-400 text-xs leading-relaxed hidden md:block"
+                  >
+                    Professional mobile-responsive website for geomatics and
+                    engineering firm with service showcase and consultation
+                    booking.
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >JavaScript</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 4: DeFi Wallet -->
+            <div
+              class="group relative rounded-2xl bg-surface-dark border border-white/5 overflow-hidden hover:border-primary/30 transition-all duration-500 hover:shadow-glow-sm flex flex-col"
+            >
+              <div
+                class="aspect-video w-full overflow-hidden relative bg-[#1E1E24] flex items-center justify-center"
+              >
+                <!-- Wallet Graphic -->
+                <div
+                  class="w-2/3 h-3/4 bg-gradient-to-b from-gray-700 to-gray-800 rounded-lg shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-500 border-t border-white/10"
+                ></div>
+
+                <div
+                  class="absolute top-4 right-4 h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 text-white hover:bg-white hover:text-black"
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >arrow_outward</span
+                  >
+                </div>
+              </div>
+              <div
+                class="p-3 md:p-5 flex flex-col gap-2 flex-grow bg-[#131313]"
+              >
+                <div>
+                  <h3 class="text-sm md:text-base font-bold text-white mb-1">
+                    Klina AI
+                  </h3>
+                  <p
+                    class="text-gray-400 text-xs leading-relaxed hidden md:block"
+                  >
+                    AI-powered data cleaning tool that transforms messy CSV
+                    files using natural language prompts. Built with Django and
+                    Google Gemini API.
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mt-auto pt-2">
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >Python</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >TailwindCSS</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded bg-[#1E1E24] text-[#A6A6B0] text-[10px] md:text-xs font-semibold uppercase tracking-wide"
+                    >JavaScript</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- View All Button -->
+          <div class="flex justify-center mt-4">
+            <button
+              onclick="window.location.href = 'projects.html'"
+              class="group flex items-center gap-2 px-8 py-4 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all text-sm font-bold tracking-wide text-white uppercase"
+            >
+              View All Archives
+              <span
+                class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform"
+                >arrow_forward</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Stack Section -->
+      <section id="stack" class="py-24 w-full overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-16">
+          <div class="flex flex-col gap-4 border-l-4 border-primary pl-6">
+            <h2
+              class="text-4xl md:text-5xl font-bold tracking-tight text-white"
+            >
+              Tech Stack & Tools
+            </h2>
+          </div>
+        </div>
+
+        <!-- Marquee Row 1 — scrolls LEFT -->
+        <div class="marquee-container relative mb-5">
+          <div
+            class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none"
+          ></div>
+          <div
+            class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none"
+          ></div>
+          <div class="marquee-track marquee-left flex gap-5">
+            <!-- Set A -->
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-orange-500">html</span
+              ><span>HTML</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-500">css</span
+              ><span>CSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-cyan-400">style</span
+              ><span>TailwindCSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-400"
+                >terminal</span
+              ><span>Python</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-green-600">dns</span
+              ><span>Django</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-yellow-400"
+                >javascript</span
+              ><span>Javascript</span>
+            </div>
+            <!-- Duplicate Set A for seamless loop -->
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-orange-500">html</span
+              ><span>HTML</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-500">css</span
+              ><span>CSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-cyan-400">style</span
+              ><span>TailwindCSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-400"
+                >terminal</span
+              ><span>Python</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-green-600">dns</span
+              ><span>Django</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-yellow-400"
+                >javascript</span
+              ><span>Javascript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marquee Row 2 — scrolls RIGHT -->
+        <div class="marquee-container relative">
+          <div
+            class="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none"
+          ></div>
+          <div
+            class="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none"
+          ></div>
+          <div class="marquee-track marquee-right flex gap-5">
+            <!-- Set B -->
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-yellow-400"
+                >javascript</span
+              ><span>Javascript</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-green-600">dns</span
+              ><span>Django</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-400"
+                >terminal</span
+              ><span>Python</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-cyan-400">style</span
+              ><span>TailwindCSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-500">css</span
+              ><span>CSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-orange-500">html</span
+              ><span>HTML</span>
+            </div>
+            <!-- Duplicate Set B for seamless loop -->
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-yellow-400"
+                >javascript</span
+              ><span>Javascript</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-green-600">dns</span
+              ><span>Django</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-400"
+                >terminal</span
+              ><span>Python</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-cyan-400">style</span
+              ><span>TailwindCSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-blue-500">css</span
+              ><span>CSS</span>
+            </div>
+            <div class="marquee-pill">
+              <span class="material-symbols-outlined text-orange-500">html</span
+              ><span>HTML</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proficiency Progress Bars -->
+        <div class="max-w-7xl mx-auto px-6 mt-20">
+          <h3 class="text-xl font-bold text-white mb-8 tracking-tight">
+            Proficiency
+          </h3>
+          <div
+            id="skill-bars"
+            class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6"
+          >
+            <!-- HTML - 90% -->
+            <div class="skill-bar-item">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-orange-500 text-lg"
+                    >html</span
+                  >
+                  <span class="text-sm font-bold text-gray-300">HTML</span>
+                </div>
+                <span class="text-xs font-bold text-gray-500">90%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div
+                  class="skill-bar-fill"
+                  data-width="90"
+                  style="background: linear-gradient(90deg, #f97316, #fb923c)"
+                ></div>
+              </div>
+            </div>
+
+            <!-- CSS - 80% -->
+            <div class="skill-bar-item">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-blue-500 text-lg"
+                    >css</span
+                  >
+                  <span class="text-sm font-bold text-gray-300">CSS</span>
+                </div>
+                <span class="text-xs font-bold text-gray-500">80%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div
+                  class="skill-bar-fill"
+                  data-width="80"
+                  style="background: linear-gradient(90deg, #3b82f6, #60a5fa)"
+                ></div>
+              </div>
+            </div>
+
+            <!-- TailwindCSS - 70% -->
+            <div class="skill-bar-item">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-cyan-400 text-lg"
+                    >style</span
+                  >
+                  <span class="text-sm font-bold text-gray-300"
+                    >TailwindCSS</span
+                  >
+                </div>
+                <span class="text-xs font-bold text-gray-500">70%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div
+                  class="skill-bar-fill"
+                  data-width="70"
+                  style="background: linear-gradient(90deg, #22d3ee, #67e8f9)"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Django - 65% -->
+            <div class="skill-bar-item">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-green-600 text-lg"
+                    >dns</span
+                  >
+                  <span class="text-sm font-bold text-gray-300">Django</span>
+                </div>
+                <span class="text-xs font-bold text-gray-500">65%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div
+                  class="skill-bar-fill"
+                  data-width="65"
+                  style="background: linear-gradient(90deg, #16a34a, #4ade80)"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Python - 60% -->
+            <div class="skill-bar-item">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-blue-400 text-lg"
+                    >terminal</span
+                  >
+                  <span class="text-sm font-bold text-gray-300">Python</span>
+                </div>
+                <span class="text-xs font-bold text-gray-500">60%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div
+                  class="skill-bar-fill"
+                  data-width="60"
+                  style="background: linear-gradient(90deg, #60a5fa, #93c5fd)"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Javascript - 40% -->
+            <div class="skill-bar-item">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span
+                    class="material-symbols-outlined text-yellow-400 text-lg"
+                    >javascript</span
+                  >
+                  <span class="text-sm font-bold text-gray-300"
+                    >Javascript</span
+                  >
+                </div>
+                <span class="text-xs font-bold text-gray-500">40%</span>
+              </div>
+              <div class="skill-bar-bg">
+                <div
+                  class="skill-bar-fill"
+                  data-width="40"
+                  style="background: linear-gradient(90deg, #facc15, #fde047)"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer Strip (Simple) -->
+    <footer class="w-full border-t border-white/5 py-6 mt-auto">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500"
+      >
+        <p>© 2024 XantSpace. All rights reserved.</p>
+        <div class="flex gap-6 mt-2 md:mt-0">
+          <a class="hover:text-white transition-colors" href="#">Twitter</a>
+          <a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+          <a class="hover:text-white transition-colors" href="#">GitHub</a>
+          <a class="hover:text-white transition-colors" href="#">Dribbble</a>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
     <script>
       // Animate skill bars on scroll into view
-      document.addEventListener('DOMContentLoaded', () => {
-        const skillBars = document.getElementById('skill-bars');
+      document.addEventListener("DOMContentLoaded", () => {
+        const skillBars = document.getElementById("skill-bars");
         if (!skillBars) return;
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const items = skillBars.querySelectorAll('.skill-bar-item');
-              items.forEach((item, index) => {
-                setTimeout(() => {
-                  item.classList.add('visible');
-                  const fill = item.querySelector('.skill-bar-fill');
-                  if (fill) {
-                    const targetWidth = fill.getAttribute('data-width');
-                    setTimeout(() => {
-                      fill.style.width = targetWidth + '%';
-                    }, 150);
-                  }
-                }, index * 120);
-              });
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.2 });
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const items = skillBars.querySelectorAll(".skill-bar-item");
+                items.forEach((item, index) => {
+                  setTimeout(() => {
+                    item.classList.add("visible");
+                    const fill = item.querySelector(".skill-bar-fill");
+                    if (fill) {
+                      const targetWidth = fill.getAttribute("data-width");
+                      setTimeout(() => {
+                        fill.style.width = targetWidth + "%";
+                      }, 150);
+                    }
+                  }, index * 120);
+                });
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
 
         observer.observe(skillBars);
       });
     </script>
     <script>
-      (function() {
-        const canvas = document.getElementById('particle-canvas');
+      (function () {
+        const canvas = document.getElementById("particle-canvas");
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
         let w, h, particles, nebulaParticles;
         const PARTICLE_COUNT = 150; // Increased star density
         const NEBULA_COUNT = 12; // More clouds
         const SPEED = 0.15;
         const CONNECTION_DIST = 100;
+        let shootingStars = [];
 
         function resize() {
           w = canvas.width = window.innerWidth;
           h = canvas.height = window.innerHeight;
         }
 
+        function createShootingStar() {
+          const startX = Math.random() * w;
+          const startY = Math.random() * (h / 2);
+          const speed = Math.random() * 10 + 10;
+          shootingStars.push({
+            x: startX,
+            y: startY,
+            vx: speed,
+            vy: speed * (Math.random() * 0.5 + 0.5),
+            len: Math.random() * 100 + 50,
+            alpha: 1,
+          });
+        }
+
         function createParticles() {
           particles = [];
           for (let i = 0; i < PARTICLE_COUNT; i++) {
+            // Bias some stars towards a diagonal "galactic band"
+            const isBandStar = Math.random() > 0.4;
+            let x, y;
+            if (isBandStar) {
+              const t = Math.random();
+              const spread = (Math.random() - 0.5) * 400; // Spread around the diagonal
+              x = t * w;
+              y = t * h + spread;
+            } else {
+              x = Math.random() * w;
+              y = Math.random() * h;
+            }
+
             particles.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
+              x: x,
+              y: y,
               vx: (Math.random() - 0.5) * SPEED,
               vy: (Math.random() - 0.5) * SPEED,
               r: Math.random() * 1.8 + 0.2,
               alpha: Math.random() * 0.6 + 0.2,
               twinkle: Math.random() > 0.7,
-              phase: Math.random() * Math.PI * 2
+              phase: Math.random() * Math.PI * 2,
             });
           }
 
           nebulaParticles = [];
           for (let i = 0; i < NEBULA_COUNT; i++) {
+            // Place nebulas strictly along the diagonal galactic band
+            const t = Math.random();
+            const spread = (Math.random() - 0.5) * 300;
             nebulaParticles.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
-              r: Math.random() * 300 + 150, // Slightly smaller and denser
+              x: t * w,
+              y: t * h + spread,
+              r: Math.random() * 300 + 150,
               vx: (Math.random() - 0.5) * 0.1,
               vy: (Math.random() - 0.5) * 0.1,
-              color: i % 3 === 0 ? 'rgba(89, 37, 244, 0.4)' : (i % 3 === 1 ? 'rgba(45, 120, 255, 0.3)' : 'rgba(124, 82, 246, 0.2)')
+              color:
+                i % 3 === 0
+                  ? "rgba(89, 37, 244, 0.4)"
+                  : i % 3 === 1
+                    ? "rgba(45, 120, 255, 0.3)"
+                    : "rgba(124, 82, 246, 0.2)",
             });
           }
         }
@@ -703,7 +1227,7 @@
 
           // Nebula clouds
           ctx.save();
-          ctx.globalCompositeOperation = 'lighter';
+          ctx.globalCompositeOperation = "lighter";
           for (const n of nebulaParticles) {
             n.x += n.vx;
             n.y += n.vy;
@@ -714,9 +1238,15 @@
 
             const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
             grd.addColorStop(0, n.color);
-            grd.addColorStop(0.3, n.color.replace('0.4', '0.15').replace('0.3', '0.1').replace('0.2', '0.05'));
-            grd.addColorStop(1, 'transparent');
-            
+            grd.addColorStop(
+              0.3,
+              n.color
+                .replace("0.4", "0.15")
+                .replace("0.3", "0.1")
+                .replace("0.2", "0.05"),
+            );
+            grd.addColorStop(1, "transparent");
+
             ctx.fillStyle = grd;
             ctx.beginPath();
             ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
@@ -747,7 +1277,7 @@
 
             if (p.r > 1.2) {
               ctx.shadowBlur = 5;
-              ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+              ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
               ctx.fill();
               ctx.shadowBlur = 0;
             }
@@ -757,7 +1287,8 @@
           ctx.lineWidth = 0.5;
           for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
-              if (particles[i].r < 1 && particles[j].r < 1) { // Only connect smaller stars
+              if (particles[i].r < 1 && particles[j].r < 1) {
+                // Only connect smaller stars
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
@@ -772,48 +1303,93 @@
             }
           }
 
+          // Shooting Stars logic
+          if (Math.random() < 0.003) createShootingStar(); // Rare chance
+          for (let i = shootingStars.length - 1; i >= 0; i--) {
+            const s = shootingStars[i];
+            s.x += s.vx;
+            s.y += s.vy;
+            s.alpha -= 0.012;
+
+            if (s.alpha <= 0 || s.x > w || s.y > h) {
+              shootingStars.splice(i, 1);
+              continue;
+            }
+
+            ctx.save();
+            const grad = ctx.createLinearGradient(
+              s.x,
+              s.y,
+              s.x - s.vx * (s.len / 15),
+              s.y - s.vy * (s.len / 15),
+            );
+            grad.addColorStop(0, `rgba(255, 255, 255, ${s.alpha})`);
+            grad.addColorStop(1, "transparent");
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.5;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(s.x - s.vx * (s.len / 15), s.y - s.vy * (s.len / 15));
+            ctx.stroke();
+            ctx.restore();
+          }
+
           requestAnimationFrame(draw);
         }
 
-        window.addEventListener('resize', resize);
+        window.addEventListener("resize", resize);
         resize();
         createParticles();
         draw();
       })();
 
       // --- Source Code Protection (Deterrent Only) ---
-      document.addEventListener('contextmenu', (e) => e.preventDefault());
-      document.onkeydown = function(e) {
+      document.addEventListener("contextmenu", (e) => e.preventDefault());
+      document.onkeydown = function (e) {
         if (e.keyCode == 123) return false; // F12
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; // Ctrl+Shift+C
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; // Ctrl+Shift+J
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0))
+          return false; // Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0))
+          return false; // Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0))
+          return false; // Ctrl+Shift+J
+        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false; // Ctrl+U
       };
 
       // Disable drag to prevent saving images easily
       document.oncontextmenu = () => false;
       document.onselectstart = () => false;
 
-      (function() {
+      (function () {
         const devtools = {
           isOpen: false,
-          orientation: undefined
+          orientation: undefined,
         };
         const threshold = 160;
         const emitEvent = (isOpen, orientation) => {
-          window.dispatchEvent(new CustomEvent('devtoolschange', {
-            detail: { isOpen, orientation }
-          }));
+          window.dispatchEvent(
+            new CustomEvent("devtoolschange", {
+              detail: { isOpen, orientation },
+            }),
+          );
         };
 
         setInterval(() => {
-          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-          const orientation = widthThreshold ? 'vertical' : 'horizontal';
+          const widthThreshold =
+            window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold =
+            window.outerHeight - window.innerHeight > threshold;
+          const orientation = widthThreshold ? "vertical" : "horizontal";
 
-          if (!(heightThreshold && widthThreshold) &&
-              ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
+          if (
+            !(heightThreshold && widthThreshold) &&
+            ((window.Firebug &&
+              window.Firebug.chrome &&
+              window.Firebug.chrome.isInitialized) ||
+              widthThreshold ||
+              heightThreshold)
+          ) {
             if (!devtools.isOpen || devtools.orientation !== orientation) {
               emitEvent(true, orientation);
             }
@@ -828,13 +1404,19 @@
           }
         }, 500);
 
-        window.addEventListener('devtoolschange', (e) => {
+        window.addEventListener("devtoolschange", (e) => {
           if (e.detail.isOpen) {
-            console.log('%cWait!', 'color: #5925f4; font-size: 50px; font-weight: bold; text-shadow: 2px 2px #000;');
-            console.log('%cExploring the digital future is better through the UI. 🚀', 'font-size: 18px;');
+            console.log(
+              "%cWait!",
+              "color: #5925f4; font-size: 50px; font-weight: bold; text-shadow: 2px 2px #000;",
+            );
+            console.log(
+              "%cExploring the digital future is better through the UI. 🚀",
+              "font-size: 18px;",
+            );
           }
         });
       })();
     </script>
-   </body>
+  </body>
 </html>

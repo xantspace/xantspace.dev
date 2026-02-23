@@ -1,372 +1,546 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="dark" lang="en">
-   <head>
-      <meta charset="utf-8"/>
-      <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-      <title>Projects - XantSpace</title>
-      <!-- Fonts -->
-      <link href="https://fonts.googleapis.com" rel="preconnect"/>
-      <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-      <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-      <!-- Tailwind CSS -->
-      <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-      <!-- Theme Config -->
-      <script id="tailwind-config">
-         tailwind.config = {
-           darkMode: "class",
-           theme: {
-             extend: {
-               colors: {
-                 "primary": "#5925f4",
-                 "primary-light": "#7c52f6",
-                 "background-light": "#f6f5f8",
-                 "background-dark": "#0D0D0D",
-                 "surface-dark": "#161616",
-               },
-               fontFamily: {
-                 "display": ["Space Grotesk", "sans-serif"]
-               },
-               borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
-               boxShadow: {
-                   'glow': '0 0 80px -20px rgba(89, 37, 244, 0.4)',
-                   'glow-sm': '0 0 20px -5px rgba(89, 37, 244, 0.3)',
-               },
-                backgroundImage: {
-                  'glass-gradient': 'linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
-                  'glow-mesh': 'radial-gradient(at 0% 0%, rgba(89, 37, 244, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(89, 37, 244, 0.1) 0px, transparent 50%)',
-                }
-             },
-           },
-         }
-      </script>
-      <style>
-         /* Custom Utilities for Glassmorphism & Gradients */
-         .glass-panel {
-         background: rgba(255, 255, 255, 0.03);
-         backdrop-filter: blur(12px);
-         -webkit-backdrop-filter: blur(12px);
-         border: 1px solid rgba(255, 255, 255, 0.08);
-         }
-         .nav-glass {
-         background: rgba(13, 13, 13, 0.7);
-         backdrop-filter: blur(20px);
-         -webkit-backdrop-filter: blur(20px);
-         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-         }
-         .gradient-orb-1 {
-         background: radial-gradient(circle, rgba(89, 37, 244, 0.15) 0%, rgba(13, 13, 13, 0) 70%);
-         }
-         .gradient-orb-2 {
-         background: radial-gradient(circle, rgba(45, 120, 255, 0.1) 0%, rgba(13, 13, 13, 0) 70%);
-         }
-         .text-gradient {
-         background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
-         -webkit-background-clip: text;
-         -webkit-text-fill-color: transparent;
-         }
-            .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Projects - XantSpace</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Config -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#5925f4",
+              "primary-light": "#7c52f6",
+              "background-light": "#f6f5f8",
+              "background-dark": "#0D0D0D",
+              "surface-dark": "#161616",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              "2xl": "1rem",
+              full: "9999px",
+            },
+            boxShadow: {
+              glow: "0 0 80px -20px rgba(89, 37, 244, 0.4)",
+              "glow-sm": "0 0 20px -5px rgba(89, 37, 244, 0.3)",
+            },
+            backgroundImage: {
+              "glass-gradient":
+                "linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)",
+              "glow-mesh":
+                "radial-gradient(at 0% 0%, rgba(89, 37, 244, 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(89, 37, 244, 0.1) 0px, transparent 50%)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom Utilities for Glassmorphism & Gradients */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .nav-glass {
+        background: rgba(13, 13, 13, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .gradient-orb-1 {
+        background: radial-gradient(
+          circle,
+          rgba(89, 37, 244, 0.15) 0%,
+          rgba(13, 13, 13, 0) 70%
+        );
+      }
+      .gradient-orb-2 {
+        background: radial-gradient(
+          circle,
+          rgba(45, 120, 255, 0.1) 0%,
+          rgba(13, 13, 13, 0) 70%
+        );
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #ffffff 0%, #a5a5a5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.3s ease;
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(89, 37, 244, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+      .neon-glow {
+        text-shadow: 0 0 20px rgba(89, 37, 244, 0.5);
+      }
+
+      /* Animations */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
         }
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(89, 37, 244, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        50% {
+          transform: translateY(-20px);
         }
-        .neon-glow {
-            text-shadow: 0 0 20px rgba(89, 37, 244, 0.5);
+      }
+      .animate-float {
+        animation: float 4s ease-in-out infinite;
+      }
+      .rocket-svg-wrapper {
+        filter: drop-shadow(0 0 20px rgba(89, 37, 244, 0.5));
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Atom Orbiting Balls */
+      .atom-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: 150px;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .atom-ball {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+      .ball-1 {
+        background: #7c52f6;
+        box-shadow: 0 0 15px #7c52f6;
+        animation: orbit1 3s linear infinite;
+      }
+      .ball-2 {
+        background: #ffffff;
+        box-shadow: 0 0 15px #ffffff;
+        animation: orbit2 4s linear infinite;
+      }
+
+      @keyframes orbit1 {
+        from {
+          transform: rotateX(60deg) rotateY(0deg) translateX(70px) rotateY(0deg)
+            rotateX(-60deg);
         }
-        
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        to {
+          transform: rotateX(60deg) rotateY(360deg) translateX(70px)
+            rotateY(-360deg) rotateX(-60deg);
         }
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
+      }
+      @keyframes orbit2 {
+        from {
+          transform: rotateX(-60deg) rotateY(0deg) translateX(60px)
+            rotateY(0deg) rotateX(60deg);
         }
-        .rocket-svg-wrapper {
-            filter: drop-shadow(0 0 20px rgba(89, 37, 244, 0.5));
-            position: relative;
-            z-index: 2;
+        to {
+          transform: rotateX(-60deg) rotateY(360deg) translateX(60px)
+            rotateY(-360deg) rotateX(60deg);
         }
-        
-        /* Atom Orbiting Balls */
-        .atom-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .atom-ball {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-        .ball-1 {
-            background: #7c52f6;
-            box-shadow: 0 0 15px #7c52f6;
-            animation: orbit1 3s linear infinite;
-        }
-        .ball-2 {
-            background: #ffffff;
-            box-shadow: 0 0 15px #ffffff;
-            animation: orbit2 4s linear infinite;
+      }
+
+      /* Galaxy Explosion Effect */
+      .galaxy-beam {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scaleY(0);
+        width: 2px;
+        height: 100vh;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          #fff,
+          #5925f4,
+          #fff,
+          transparent
+        );
+        filter: blur(8px);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .galaxy-shockwave {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 50px;
+        height: 50px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      @media (min-width: 1024px) {
+        .rocket-container:hover .galaxy-beam {
+          opacity: 0.8;
+          transform: translate(-50%, -50%) scaleY(1.5);
+          width: 120px;
+          filter: blur(50px);
+          box-shadow: 0 0 150px #5925f4;
         }
 
-        @keyframes orbit1 {
-            from { transform: rotateX(60deg) rotateY(0deg) translateX(70px) rotateY(0deg) rotateX(-60deg); }
-            to { transform: rotateX(60deg) rotateY(360deg) translateX(70px) rotateY(-360deg) rotateX(-60deg); }
-        }
-        @keyframes orbit2 {
-            from { transform: rotateX(-60deg) rotateY(0deg) translateX(60px) rotateY(0deg) rotateX(60deg); }
-            to { transform: rotateX(-60deg) rotateY(360deg) translateX(60px) rotateY(-360deg) rotateX(60deg); }
+        .rocket-container:hover .galaxy-shockwave {
+          animation: shockwave 1s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
 
-        /* Galaxy Explosion Effect */
-        .galaxy-beam {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scaleY(0);
-            width: 2px;
-            height: 100vh;
-            background: linear-gradient(to bottom, transparent, #fff, #5925f4, #fff, transparent);
-            filter: blur(8px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .galaxy-shockwave {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 50px;
-            height: 50px;
-            border: 4px solid #fff;
-            border-radius: 50%;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 1;
+        .rocket-container:hover .rocket-svg-wrapper {
+          filter: drop-shadow(0 0 50px #fff);
+          animation: high-speed 0.1s linear infinite;
+          transform: scale(1.1) translateY(-20px);
+          transition: all 0.3s ease;
         }
 
-        @media (min-width: 1024px) {
-            .rocket-container:hover .galaxy-beam {
-                opacity: 0.8;
-                transform: translate(-50%, -50%) scaleY(1.5);
-                width: 120px;
-                filter: blur(50px);
-                box-shadow: 0 0 150px #5925f4;
-            }
-
-            .rocket-container:hover .galaxy-shockwave {
-                animation: shockwave 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-            }
-
-            .rocket-container:hover .rocket-svg-wrapper {
-                filter: drop-shadow(0 0 50px #fff);
-                animation: high-speed 0.1s linear infinite;
-                transform: scale(1.1) translateY(-20px);
-                transition: all 0.3s ease;
-            }
-
-            .rocket-container:hover .flame-effect {
-                height: 60px;
-                width: 12px;
-                filter: blur(4px);
-                opacity: 1;
-                animation: flame-thrust 0.05s linear infinite;
-            }
+        .rocket-container:hover .flame-effect {
+          height: 60px;
+          width: 12px;
+          filter: blur(4px);
+          opacity: 1;
+          animation: flame-thrust 0.05s linear infinite;
         }
+      }
 
-        @keyframes high-speed {
-            0% { transform: scale(1.1) translate(0, -20px); }
-            25% { transform: scale(1.1) translate(2px, -22px); }
-            50% { transform: scale(1.1) translate(-2px, -18px); }
-            75% { transform: scale(1.1) translate(1px, -21px); }
-            100% { transform: scale(1.1) translate(0, -20px); }
+      @keyframes high-speed {
+        0% {
+          transform: scale(1.1) translate(0, -20px);
         }
+        25% {
+          transform: scale(1.1) translate(2px, -22px);
+        }
+        50% {
+          transform: scale(1.1) translate(-2px, -18px);
+        }
+        75% {
+          transform: scale(1.1) translate(1px, -21px);
+        }
+        100% {
+          transform: scale(1.1) translate(0, -20px);
+        }
+      }
 
+      @keyframes flame-thrust {
+        0% {
+          transform: scaleY(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scaleY(1.5);
+          opacity: 1;
+        }
+        100% {
+          transform: scaleY(1.2);
+          opacity: 0.9;
+        }
+      }
 
+      @keyframes shockwave {
+        0% {
+          transform: translate(-50%, -50%) scale(0.2);
+          opacity: 1;
+          border-width: 20px;
+          border-color: #fff;
+        }
+        50% {
+          border-color: #5925f4;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(10);
+          opacity: 0;
+          border-width: 1px;
+          border-color: transparent;
+        }
+      }
 
-        @keyframes flame-thrust {
-            0% { transform: scaleY(1); opacity: 0.8; }
-            50% { transform: scaleY(1.5); opacity: 1; }
-            100% { transform: scaleY(1.2); opacity: 0.9; }
-        }
-
-        @keyframes shockwave {
-            0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; border-width: 20px; border-color: #fff; }
-            50% { border-color: #5925f4; }
-            100% { transform: translate(-50%, -50%) scale(10); opacity: 0; border-width: 1px; border-color: transparent; }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0D0D0D; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #5925f4; 
-            border-radius: 20px;
-            border: 3px solid #0D0D0D;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #7c52f6; 
-        }
-        /* Firefox */
-        * {
-            scrollbar-width: thin;
-            scrollbar-color: #5925f4 #0D0D0D;
-        }
-      </style>
-   </head>
-   <body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col">
-      <!-- Ambient Background Gradients -->
-      <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-         <div class="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] gradient-orb-1 rounded-full mix-blend-screen opacity-60"></div>
-         <div class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] gradient-orb-2 rounded-full mix-blend-screen opacity-50"></div>
-         <div class="absolute -bottom-[20%] left-[20%] w-[900px] h-[900px] gradient-orb-1 rounded-full mix-blend-screen opacity-40"></div>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0d0d0d;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #5925f4;
+        border-radius: 20px;
+        border: 3px solid #0d0d0d;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7c52f6;
+      }
+      /* Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #5925f4 #0d0d0d;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden min-h-screen flex flex-col"
+  >
+    <!-- Ambient Background Gradients -->
+    <div
+      class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
+    >
+      <div
+        class="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] gradient-orb-1 rounded-full mix-blend-screen opacity-60"
+      ></div>
+      <div
+        class="absolute top-[20%] -right-[10%] w-[600px] h-[600px] gradient-orb-2 rounded-full mix-blend-screen opacity-50"
+      ></div>
+      <div
+        class="absolute -bottom-[20%] left-[20%] w-[900px] h-[900px] gradient-orb-1 rounded-full mix-blend-screen opacity-40"
+      ></div>
+    </div>
+    <!-- Particle Canvas -->
+    <canvas
+      id="particle-canvas"
+      class="fixed top-0 left-0 w-full h-full pointer-events-none z-[1]"
+    ></canvas>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-glass transition-all duration-300">
+      <div
+        class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a class="flex items-center gap-2 group" href="index.html">
+          <div
+            class="size-8 rounded bg-primary flex items-center justify-center text-white shadow-glow-sm"
+          >
+            <span class="font-bold text-lg">X</span>
+          </div>
+          <span
+            class="font-bold text-lg tracking-tight group-hover:text-primary-light transition-colors"
+            >XantSpace</span
+          >
+        </a>
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="index.html"
+            >Home</a
+          >
+          <a
+            class="text-sm font-medium text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary after:transition-all"
+            href="projects.html"
+            >Work</a
+          >
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="index.html#stack"
+            >Stack</a
+          >
+          <a
+            class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full"
+            href="about.html"
+            >About</a
+          >
+        </div>
+        <!-- CTA & Mobile Menu -->
+        <div class="flex items-center gap-4">
+          <button
+            onclick="window.location.href = 'about.html#contact'"
+            class="hidden md:flex h-10 px-5 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-sm font-bold tracking-wide transition-all shadow-glow-sm hover:shadow-glow transform hover:-translate-y-0.5"
+          >
+            Let's Talk
+          </button>
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-white hover:text-primary transition-colors"
+          >
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+        </div>
       </div>
-      <!-- Particle Canvas -->
-      <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[1]"></canvas>
-      <!-- Navigation -->
-      <nav class="fixed top-0 w-full z-50 nav-glass transition-all duration-300">
-         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a class="flex items-center gap-2 group" href="index.html">
-               <div class="size-8 rounded bg-primary flex items-center justify-center text-white shadow-glow-sm">
-                  <span class="font-bold text-lg">X</span>
-               </div>
-               <span class="font-bold text-lg tracking-tight group-hover:text-primary-light transition-colors">XantSpace</span>
-            </a>
-            <!-- Desktop Links -->
-            <div class="hidden md:flex items-center gap-10">
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="index.html">Home</a>
-               <a class="text-sm font-medium text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary after:transition-all" href="projects.html">Work</a>
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="index.html#stack">Stack</a>
-               <a class="text-sm font-medium text-gray-300 hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full" href="about.html">About</a>
-
-            </div>
-            <!-- CTA & Mobile Menu -->
-            <div class="flex items-center gap-4">
-               <button onclick="window.location.href='about.html#contact'" class="hidden md:flex h-10 px-5 items-center justify-center rounded-lg bg-primary hover:bg-primary-light text-white text-sm font-bold tracking-wide transition-all shadow-glow-sm hover:shadow-glow transform hover:-translate-y-0.5">
-               Let's Talk
-               </button>
-               <button id="mobile-menu-btn" class="md:hidden p-2 text-white hover:text-primary transition-colors">
-               <span class="material-symbols-outlined">menu</span>
-               </button>
-            </div>
-         </div>
+    </nav>
+    <!-- Mobile Sidebar -->
+    <div
+      id="mobile-sidebar"
+      class="fixed top-0 right-0 w-[70%] h-full bg-[#0D0D0D] p-6 z-[60] transform translate-x-full transition-transform duration-300 border-l border-white/5 shadow-2xl flex flex-col gap-8"
+    >
+      <div class="flex items-center justify-between mb-8">
+        <span class="font-bold text-xl text-white">XantSpace</span>
+        <button
+          id="mobile-close-btn"
+          class="p-2 text-gray-400 hover:text-white transition-colors"
+        >
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6">
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="index.html"
+          >Home</a
+        >
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="projects.html"
+          >Work</a
+        >
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="index.html#stack"
+          >Stack</a
+        >
+        <a
+          class="text-lg font-medium text-gray-300 hover:text-primary transition-colors"
+          href="about.html"
+          >About</a
+        >
       </nav>
-      <!-- Mobile Sidebar -->
-      <div id="mobile-sidebar" class="fixed top-0 right-0 w-[70%] h-full bg-[#0D0D0D] p-6 z-[60] transform translate-x-full transition-transform duration-300 border-l border-white/5 shadow-2xl flex flex-col gap-8">
-            <div class="flex items-center justify-between mb-8">
-                <span class="font-bold text-xl text-white">XantSpace</span>
-                <button id="mobile-close-btn" class="p-2 text-gray-400 hover:text-white transition-colors">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </div>
-             <nav class="flex flex-col gap-6">
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="index.html">Home</a>
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="projects.html">Work</a>
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="index.html#stack">Stack</a>
-               <a class="text-lg font-medium text-gray-300 hover:text-primary transition-colors" href="about.html">About</a>
-
-            </nav>
-            <div class="mt-auto pt-8 border-t border-white/10">
-                 <button onclick="window.location.href='about.html#contact'" class="w-full h-12 rounded-lg bg-primary hover:bg-primary-light text-white font-bold transition-all shadow-glow-sm">
-                    Let's Talk
-                 </button>
-            </div>
+      <div class="mt-auto pt-8 border-t border-white/10">
+        <button
+          onclick="window.location.href = 'about.html#contact'"
+          class="w-full h-12 rounded-lg bg-primary hover:bg-primary-light text-white font-bold transition-all shadow-glow-sm"
+        >
+          Let's Talk
+        </button>
       </div>
-      <!-- Main Content -->
-      <main class="relative z-10 flex-grow flex flex-col pt-20">
-         <div class="max-w-7xl mx-auto px-6 py-16">
-            <!-- Coming Soon Section (Django Style) -->
-            <div class="flex-grow flex flex-col items-center justify-center text-center py-20 min-h-[60vh]">
-               <!-- Rocket Container -->
-               <div class="rocket-container relative mb-12 animate-float group">
-                  <!-- Galaxy Explosion Elements -->
-                  <div class="galaxy-beam"></div>
-                  <div class="galaxy-shockwave"></div>
-                  
-                  <!-- Atom Balls -->
-                  <div class="atom-container">
-                     <div class="atom-ball ball-1"></div>
-                     <div class="atom-ball ball-2"></div>
-                  </div>
-                  
-                  <div class="rocket-svg-wrapper">
-                     <svg class="w-24 h-24 md:w-32 md:h-32 text-primary" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C12 2 11 6 8 9C5 12 2 13 2 13L4 15L6 14.5L7 15.5L6.5 17.5L8.5 19.5L10.5 19L11.5 20L11 22C11 22 12 19 15 16C18 13 22 12 22 12C22 12 19 11 16 8C13 5 12 2 12 2Z" fill="currentColor" />
-                        <path d="M9 15C9 15 8.5 17 6.5 17.5L8.5 19.5C9 17.5 11 17 11 17L9 15Z" fill="#7c52f6" />
-                        <circle cx="15" cy="9" r="1.5" fill="#0D0D0D" />
-                     </svg>
-                  </div>
-                  <!-- Rocket Flame/Trail -->
-                  <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
-                     <div class="w-2 h-8 bg-gradient-to-t from-transparent via-primary/50 to-primary rounded-full animate-pulse flame-effect"></div>
-                     <div class="w-1.5 h-6 bg-gradient-to-t from-transparent via-primary-light/30 to-primary-light/80 rounded-full animate-pulse delay-75 flame-effect"></div>
-                  </div>
-               </div>
+    </div>
+    <!-- Main Content -->
+    <main class="relative z-10 flex-grow flex flex-col pt-20">
+      <div class="max-w-7xl mx-auto px-6 py-16">
+        <!-- Coming Soon Section (Django Style) -->
+        <div
+          class="flex-grow flex flex-col items-center justify-center text-center py-20 min-h-[60vh]"
+        >
+          <!-- Rocket Container -->
+          <div class="rocket-container relative mb-12 animate-float group">
+            <!-- Galaxy Explosion Elements -->
+            <div class="galaxy-beam"></div>
+            <div class="galaxy-shockwave"></div>
 
-               <h1 class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 neon-glow text-white">
-                  Coming Soon
-               </h1>
-               <p class="text-xl md:text-2xl text-gray-400 font-medium max-w-lg mx-auto mb-8">
-                  The projects are underway. We're building something extraordinary behind the scenes.
-               </p>
-               
-               <div class="flex gap-4">
-                  <span class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest text-primary-light animate-pulse">
-                     Launch Imminent
-                  </span>
-               </div>
+            <!-- Atom Balls -->
+            <div class="atom-container">
+              <div class="atom-ball ball-1"></div>
+              <div class="atom-ball ball-2"></div>
+            </div>
 
-               <div class="mt-16">
-                  <a href="index.html" class="text-sm font-bold text-gray-500 hover:text-white transition-colors flex items-center gap-2 group">
-                     <span class="material-symbols-outlined text-base group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                     Back to Orbit
-                  </a>
-               </div>
+            <div class="rocket-svg-wrapper">
+              <svg
+                class="w-24 h-24 md:w-32 md:h-32 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2C12 2 11 6 8 9C5 12 2 13 2 13L4 15L6 14.5L7 15.5L6.5 17.5L8.5 19.5L10.5 19L11.5 20L11 22C11 22 12 19 15 16C18 13 22 12 22 12C22 12 19 11 16 8C13 5 12 2 12 2Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M9 15C9 15 8.5 17 6.5 17.5L8.5 19.5C9 17.5 11 17 11 17L9 15Z"
+                  fill="#7c52f6"
+                />
+                <circle cx="15" cy="9" r="1.5" fill="#0D0D0D" />
+              </svg>
             </div>
-         </div>
-      </main>
-      <!-- Footer Strip (Simple) -->
-      <footer class="w-full border-t border-white/5 py-6 mt-auto">
-         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-            <p>© 2024 XantSpace. All rights reserved.</p>
-            <div class="flex gap-6 mt-2 md:mt-0">
-               <a class="hover:text-white transition-colors" href="#">Twitter</a>
-               <a class="hover:text-white transition-colors" href="#">LinkedIn</a>
-               <a class="hover:text-white transition-colors" href="#">GitHub</a>
-               <a class="hover:text-white transition-colors" href="#">Dribbble</a>
+            <!-- Rocket Flame/Trail -->
+            <div
+              class="absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+            >
+              <div
+                class="w-2 h-8 bg-gradient-to-t from-transparent via-primary/50 to-primary rounded-full animate-pulse flame-effect"
+              ></div>
+              <div
+                class="w-1.5 h-6 bg-gradient-to-t from-transparent via-primary-light/30 to-primary-light/80 rounded-full animate-pulse delay-75 flame-effect"
+              ></div>
             </div>
-         </div>
-      </footer>
-   <script type="module" src="/src/main.js"></script>
-     <script>
-      (function() {
-        const canvas = document.getElementById('particle-canvas');
+          </div>
+
+          <h1
+            class="text-5xl md:text-7xl font-bold tracking-tighter mb-4 neon-glow text-white"
+          >
+            Coming Soon
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-gray-400 font-medium max-w-lg mx-auto mb-8"
+          >
+            The projects are underway. We're building something extraordinary
+            behind the scenes.
+          </p>
+
+          <div class="flex gap-4">
+            <span
+              class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest text-primary-light animate-pulse"
+            >
+              Launch Imminent
+            </span>
+          </div>
+
+          <div class="mt-16">
+            <a
+              href="index.html"
+              class="text-sm font-bold text-gray-500 hover:text-white transition-colors flex items-center gap-2 group"
+            >
+              <span
+                class="material-symbols-outlined text-base group-hover:-translate-x-1 transition-transform"
+                >arrow_back</span
+              >
+              Back to Orbit
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer Strip (Simple) -->
+    <footer class="w-full border-t border-white/5 py-6 mt-auto">
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500"
+      >
+        <p>© 2024 XantSpace. All rights reserved.</p>
+        <div class="flex gap-6 mt-2 md:mt-0">
+          <a class="hover:text-white transition-colors" href="#">Twitter</a>
+          <a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+          <a class="hover:text-white transition-colors" href="#">GitHub</a>
+          <a class="hover:text-white transition-colors" href="#">Dribbble</a>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      (function () {
+        const canvas = document.getElementById("particle-canvas");
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext("2d");
         let w, h, particles, nebulaParticles;
         const PARTICLE_COUNT = 150;
         const NEBULA_COUNT = 10;
@@ -374,14 +548,29 @@
         const CONNECTION_DIST = 100;
         let currentWarp = 0;
         let isWarping = false;
+        let shootingStars = [];
+
+        function createShootingStar() {
+          const startX = Math.random() * w;
+          const startY = Math.random() * (h / 2);
+          const speed = Math.random() * 10 + 10;
+          shootingStars.push({
+            x: startX,
+            y: startY,
+            vx: speed,
+            vy: speed * (Math.random() * 0.5 + 0.5),
+            len: Math.random() * 100 + 50,
+            alpha: 1,
+          });
+        }
 
         // Listen for rocket hover
-        const rocket = document.querySelector('.rocket-container');
+        const rocket = document.querySelector(".rocket-container");
         if (rocket) {
-          rocket.addEventListener('mouseenter', () => {
+          rocket.addEventListener("mouseenter", () => {
             if (window.innerWidth >= 1024) isWarping = true;
           });
-          rocket.addEventListener('mouseleave', () => isWarping = false);
+          rocket.addEventListener("mouseleave", () => (isWarping = false));
         }
 
         function resize() {
@@ -392,27 +581,46 @@
         function createParticles() {
           particles = [];
           for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const isBandStar = Math.random() > 0.4;
+            let x, y;
+            if (isBandStar) {
+              const t = Math.random();
+              const spread = (Math.random() - 0.5) * 400;
+              x = t * w;
+              y = t * h + spread;
+            } else {
+              x = Math.random() * w;
+              y = Math.random() * h;
+            }
+
             particles.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
+              x: x,
+              y: y,
               vx: (Math.random() - 0.5) * SPEED,
               vy: (Math.random() - 0.5) * SPEED,
               r: Math.random() * 1.8 + 0.2,
               alpha: Math.random() * 0.6 + 0.2,
               twinkle: Math.random() > 0.7,
-              phase: Math.random() * Math.PI * 2
+              phase: Math.random() * Math.PI * 2,
             });
           }
 
           nebulaParticles = [];
           for (let i = 0; i < NEBULA_COUNT; i++) {
+            const t = Math.random();
+            const spread = (Math.random() - 0.5) * 300;
             nebulaParticles.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
+              x: t * w,
+              y: t * h + spread,
               r: Math.random() * 300 + 150,
               vx: (Math.random() - 0.5) * 0.1,
               vy: (Math.random() - 0.5) * 0.1,
-              color: i % 3 === 0 ? 'rgba(89, 37, 244, 0.45)' : (i % 3 === 1 ? 'rgba(45, 120, 255, 0.35)' : 'rgba(124, 82, 246, 0.25)')
+              color:
+                i % 3 === 0
+                  ? "rgba(89, 37, 244, 0.45)"
+                  : i % 3 === 1
+                    ? "rgba(45, 120, 255, 0.35)"
+                    : "rgba(124, 82, 246, 0.25)",
             });
           }
         }
@@ -429,11 +637,11 @@
 
           // Nebula clouds
           ctx.save();
-          ctx.globalCompositeOperation = 'lighter';
+          ctx.globalCompositeOperation = "lighter";
           for (const n of nebulaParticles) {
             n.x += n.vx;
-            n.y += n.vy + (currentWarp * 0.2);
-            
+            n.y += n.vy + currentWarp * 0.2;
+
             if (n.x < -n.r) n.x = w + n.r;
             if (n.x > w + n.r) n.x = -n.r;
             if (n.y < -n.r) n.y = h + n.r;
@@ -441,15 +649,21 @@
 
             const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
             grd.addColorStop(0, n.color);
-            grd.addColorStop(0.35, n.color.replace('0.45', '0.15').replace('0.35', '0.1').replace('0.25', '0.08'));
-            grd.addColorStop(1, 'transparent');
+            grd.addColorStop(
+              0.35,
+              n.color
+                .replace("0.45", "0.15")
+                .replace("0.35", "0.1")
+                .replace("0.25", "0.08"),
+            );
+            grd.addColorStop(1, "transparent");
             ctx.fillStyle = grd;
-            
+
             ctx.save();
             if (currentWarp > 2) {
-               ctx.translate(n.x, n.y);
-               ctx.scale(1, 1 + (currentWarp * 0.05));
-               ctx.translate(-n.x, -n.y);
+              ctx.translate(n.x, n.y);
+              ctx.scale(1, 1 + currentWarp * 0.05);
+              ctx.translate(-n.x, -n.y);
             }
             ctx.beginPath();
             ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
@@ -477,7 +691,7 @@
             if (currentWarp > 2) {
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
-              ctx.lineTo(p.x, p.y - (currentWarp * 2.5));
+              ctx.lineTo(p.x, p.y - currentWarp * 2.5);
               ctx.strokeStyle = `rgba(255, 255, 255, ${currentAlpha * 2})`;
               ctx.lineWidth = p.r;
               ctx.stroke();
@@ -489,7 +703,7 @@
 
               if (p.r > 1.2) {
                 ctx.shadowBlur = 5;
-                ctx.shadowColor = 'rgba(255, 255, 255, 0.5)';
+                ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
                 ctx.fill();
                 ctx.shadowBlur = 0;
               }
@@ -506,7 +720,10 @@
                   const dy = particles[i].y - particles[j].y;
                   const dist = Math.sqrt(dx * dx + dy * dy);
                   if (dist < CONNECTION_DIST) {
-                    const opacity = (1 - dist / CONNECTION_DIST) * 0.1 * (1 - currentWarp / 10);
+                    const opacity =
+                      (1 - dist / CONNECTION_DIST) *
+                      0.1 *
+                      (1 - currentWarp / 10);
                     ctx.strokeStyle = `rgba(89, 37, 244, ${opacity})`;
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
@@ -518,48 +735,93 @@
             }
           }
 
+          // Shooting Stars logic
+          if (Math.random() < 0.003 && currentWarp < 5) createShootingStar();
+          for (let i = shootingStars.length - 1; i >= 0; i--) {
+            const s = shootingStars[i];
+            s.x += s.vx;
+            s.y += s.vy + currentWarp * 0.5;
+            s.alpha -= 0.012;
+
+            if (s.alpha <= 0 || s.x > w || s.y > h) {
+              shootingStars.splice(i, 1);
+              continue;
+            }
+
+            ctx.save();
+            const grad = ctx.createLinearGradient(
+              s.x,
+              s.y,
+              s.x - s.vx * (s.len / 15),
+              s.y - s.vy * (s.len / 15),
+            );
+            grad.addColorStop(0, `rgba(255, 255, 255, ${s.alpha})`);
+            grad.addColorStop(1, "transparent");
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.5;
+            ctx.lineCap = "round";
+            ctx.beginPath();
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(s.x - s.vx * (s.len / 15), s.y - s.vy * (s.len / 15));
+            ctx.stroke();
+            ctx.restore();
+          }
+
           requestAnimationFrame(draw);
         }
 
-        window.addEventListener('resize', resize);
+        window.addEventListener("resize", resize);
         resize();
         createParticles();
         draw();
       })();
 
       // --- Source Code Protection (Deterrent Only) ---
-      document.addEventListener('contextmenu', (e) => e.preventDefault());
-      document.onkeydown = function(e) {
+      document.addEventListener("contextmenu", (e) => e.preventDefault());
+      document.onkeydown = function (e) {
         if (e.keyCode == 123) return false; // F12
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false; // Ctrl+Shift+I
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) return false; // Ctrl+Shift+C
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false; // Ctrl+Shift+J
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; // Ctrl+U
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0))
+          return false; // Ctrl+Shift+I
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "C".charCodeAt(0))
+          return false; // Ctrl+Shift+C
+        if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0))
+          return false; // Ctrl+Shift+J
+        if (e.ctrlKey && e.keyCode == "U".charCodeAt(0)) return false; // Ctrl+U
       };
 
       // Disable drag to prevent saving images easily
       document.oncontextmenu = () => false;
       document.onselectstart = () => false;
 
-      (function() {
+      (function () {
         const devtools = {
           isOpen: false,
-          orientation: undefined
+          orientation: undefined,
         };
         const threshold = 160;
         const emitEvent = (isOpen, orientation) => {
-          window.dispatchEvent(new CustomEvent('devtoolschange', {
-            detail: { isOpen, orientation }
-          }));
+          window.dispatchEvent(
+            new CustomEvent("devtoolschange", {
+              detail: { isOpen, orientation },
+            }),
+          );
         };
 
         setInterval(() => {
-          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-          const orientation = widthThreshold ? 'vertical' : 'horizontal';
+          const widthThreshold =
+            window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold =
+            window.outerHeight - window.innerHeight > threshold;
+          const orientation = widthThreshold ? "vertical" : "horizontal";
 
-          if (!(heightThreshold && widthThreshold) &&
-              ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
+          if (
+            !(heightThreshold && widthThreshold) &&
+            ((window.Firebug &&
+              window.Firebug.chrome &&
+              window.Firebug.chrome.isInitialized) ||
+              widthThreshold ||
+              heightThreshold)
+          ) {
             if (!devtools.isOpen || devtools.orientation !== orientation) {
               emitEvent(true, orientation);
             }
@@ -574,13 +836,19 @@
           }
         }, 500);
 
-        window.addEventListener('devtoolschange', (e) => {
+        window.addEventListener("devtoolschange", (e) => {
           if (e.detail.isOpen) {
-            console.log('%cWait!', 'color: #5925f4; font-size: 50px; font-weight: bold; text-shadow: 2px 2px #000;');
-            console.log('%cExploring the digital future is better through the UI. 🚀', 'font-size: 18px;');
+            console.log(
+              "%cWait!",
+              "color: #5925f4; font-size: 50px; font-weight: bold; text-shadow: 2px 2px #000;",
+            );
+            console.log(
+              "%cExploring the digital future is better through the UI. 🚀",
+              "font-size: 18px;",
+            );
           }
         });
       })();
     </script>
-   </body>
+  </body>
 </html>
